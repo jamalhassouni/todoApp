@@ -1,0 +1,83 @@
+  .app-header{
+   width:500px;
+   height:80px;
+   position: fixed;
+   padding: 15px;
+   top: 40px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+   z-index: 5;
+   background: #25b99a;
+   box-shadow: 0px 2px 4px rgba(44,62,80,0.15);
+   border-bottom-right-radius: 10px;
+   border-bottom-left-radius: 10px;
+  }
+  .app-header input{
+    width: 100%;
+    height: 50px;
+    float: left;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 400;
+    text-indent: 18px;
+    padding: 0 60px 0 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px 25px 25px 5px;
+    border: 0px;
+    box-shadow: none;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+  }
+  .app-header input::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  .app-header input:-moz-input-placeholder {
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  .app-header input::-moz-input-placeholder {
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  .app-header input:-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  .app-header button {
+    width: 50px;
+    height: 50px;
+
+    position:absolute;
+    top:15px;
+    right:15px;
+    z-index:2;
+
+    border-radius: 25px;
+    background: #fff;
+    border: 0px;
+    box-shadow: none;
+    outline: none;
+    cursor: pointer;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+
+  .app-header button svg {
+    width: 16px;
+    height: 16px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    margin: -8px 0 0 -8px;
+  }
+
+  .app-header button svg .fill {
+    fill: #25b99a;
+  }

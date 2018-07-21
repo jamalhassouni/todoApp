@@ -1,0 +1,16 @@
+  li {
+    padding: 10px 15px;
+    background: #eee;
+  }
+  ul#todo li:hover {
+    cursor:move;
+    background: #e1e1e1;
+  }
+
+  .placeholder {
+    background: #fff078;
+  }
+  .placeholder:before {
+    content: "Drop here";
+    color: #e1d25a;
+  }
