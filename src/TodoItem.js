@@ -6,7 +6,7 @@ chrome:() =>  <div className="cover-bar"></div>,
 
 };
 var cachedTodos;
-class List extends Component {
+class TodoItem extends Component {
   constructor(props) {
     super(props);
     this.handleDelete = this.handleDelete.bind(this);
@@ -25,7 +25,7 @@ class List extends Component {
       list = list.map(function(item,index){
         // eslint-disable-next-line
         const dragging = (index == this.state.dragging) ? "dragging" : "";
-
+                     // eslint-disable-next-line
                    if( index == this.state.idEdited){
                    return(
                   <input className="inputedit" ref="input" key={index}  type="text" onKeyPress={this.handleSave.bind(this)}   defaultValue={item} id={index}/>
@@ -34,11 +34,9 @@ class List extends Component {
                    return( <li className={dragging} data-value={item} onClick={this.handleEdit.bind(this)}  draggable="true"  ref="Item" data-id={index} key={index} onDrop={this.Drop.bind(this)} onDragOver={this.dragOver.bind(this)} onDragLeave={this.dragLeave.bind(this)} onDragEnter={this.dragEnter.bind(this)}   onDragEnd={this.dragEnd.bind(this)}  onDragStart={this.dragStart.bind(this)} >
                     {item}
                    <div className="buttons">
-                     <button className="remove" onClick={this.handleDelete}>
-                     <div dangerouslySetInnerHTML={{ __html: removeSVG }} />
+                     <button className="remove" onClick={this.handleDelete} dangerouslySetInnerHTML={{ __html: removeSVG }}>
                      </button>
-                     <button className="complete" onClick={this.handleComplete}>
-                     <div  dangerouslySetInnerHTML={{ __html: completeSVG }} />
+                     <button className="complete" onClick={this.handleComplete} dangerouslySetInnerHTML={{ __html: completeSVG }} >
                      </button>
                    </div>
                  </li>);
@@ -81,14 +79,25 @@ class List extends Component {
 
   }
   handleEdit(e){
-    e.preventDefault();
-    console.log("idedited",this.state.idEdited);
+    console.log("this parent",e.currentTarget);
+    console.log("this children",e.target);
+    if(e.target === e.currentTarget) {
+      console.log("idedited",this.state.idEdited);
       let item =  e.currentTarget ;
       let id = item.dataset.id;
        this.setState({
         idEdited:id
        });
        console.log("id",id,"cureent id",this.state.idEdited);
+    }else{
+      this.setState({
+        idEdited:null
+       });
+
+    }
+
+
+
 
 
   }
@@ -99,14 +108,19 @@ class List extends Component {
     this.props.onDelete(item);
   }
   handleComplete(e) {
-    e.preventDefault();
-    console.log(this.state.idEdited);
-    let id = e.currentTarget.parentNode.parentNode.dataset.id ;
-    this.setState({
-      idEdited:id
-         });
-    let item = cachedTodos[id];
-    this.props.onComplete(item);
+
+    if(e.target === e.currentTarget){
+      console.log(e.currentTarget);
+      console.log(e.target);
+      let id = e.currentTarget.parentNode.parentNode.dataset.id ;
+      this.setState({
+        idEdited:id
+           });
+      let item = cachedTodos[id];
+      this.props.onComplete(item);
+    }
+
+
   }
 
 dragOver(e) {
@@ -177,4 +191,4 @@ sort(list, dragging) {
 }
 
 
-export default List;
+export default TodoItem;
