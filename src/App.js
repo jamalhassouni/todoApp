@@ -6,8 +6,7 @@ import "./dnd.css";
 // Module requires
 import AddItem from "./addItem";
 import About from "./about";
-//import TodoItem   from "./todoItem";
-import List from "./dnd";
+import TodoItem from "./TodoItem";
 import CompletedItem from "./completedItem";
 import BrowserDetection from "react-browser-detection";
 const browserHandler = {
@@ -79,7 +78,7 @@ class TodoComponent extends Component {
         <div className="row">
           {/* Uncompleted tasks  */}
           <div className="col-md-6">
-            <List
+            <TodoItem
               todos={cachedTodos}
               onDelete={this.onDelete}
               onComplete={this.onComplete}
