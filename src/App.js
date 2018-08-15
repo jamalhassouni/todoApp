@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Router, Route, Link } from "react-router-dom";
 import createBrowserHistory from "history/createBrowserHistory";
+import  $ from "jquery";
 import "./App.css";
 import "./dnd.css";
 // Module requires
@@ -13,10 +14,7 @@ const browserHandler = {
   chrome: () => <div className="cover-bar" />,
   firefox: () => <div className="cover-bar width-15" />
 };
-var cachedTodos, cachedCompleted;
-localStorage.getItem("todos") == null
-  ? (cachedTodos = [])
-  : (cachedTodos = JSON.parse(localStorage.getItem("todos")));
+var  cachedCompleted;
 localStorage.getItem("completed") == null || undefined
   ? (cachedCompleted = [])
   : (cachedCompleted = JSON.parse(localStorage.getItem("completed")));
@@ -44,22 +42,20 @@ class TodoComponent extends Component {
     this.onDeleteCompleted = this.onDeleteCompleted.bind(this);
     this.onReAdded = this.onReAdded.bind(this);
     this.state = {
-      todos: cachedTodos,
-      completed: cachedCompleted
+      data: [],
+      completed: []
     };
   } //constructor
 
   render() {
-    /* var todos = this.state.todos;
-    todos = todos.map(function(item, index) {
-      return <TodoItem item={item} key={index} onDelete={this.onDelete} onComplete={this.onComplete} />;
-    }.bind(this));*/
     var completed = this.state.completed;
     completed = completed.map(
-      function(item, index) {
+      function(data, index) {
         return (
           <CompletedItem
-            item={item}
+            item={data.item}
+            data-id={data.id}
+            data-index={index}
             key={index}
             onDelete={this.onDeleteCompleted}
             onReAdded={this.onReAdded}
@@ -79,7 +75,7 @@ class TodoComponent extends Component {
           {/* Uncompleted tasks  */}
           <div className="col-md-6">
             <TodoItem
-              todos={cachedTodos}
+              todos={this.state.data}
               onDelete={this.onDelete}
               onComplete={this.onComplete}
             />
@@ -106,29 +102,33 @@ class TodoComponent extends Component {
     // update localStorage
     localStorage.setItem("todos", JSON.stringify(updatedTodos));
   }
-  onAdd(item) {
-    var updatedTodos = this.state.todos;
-    updatedTodos.unshift(item);
-    this.setState({
-      todos: updatedTodos
+    onAdd(item) {
+    $.ajax({
+      url:  'http://localhost/ReactTodolist/todo-app/src/server.php?todo='+item,
+      dataType: 'json',
+      cache: false,
+      success: function(data) {
+        this.setState({data: data.todos});
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(status, err.toString());
+      }
     });
-    // update localStorage
-    localStorage.setItem("todos", JSON.stringify(updatedTodos));
+    this.fetchAll();
   }
-  onComplete(item) {
-    var updatedTodos = this.state.todos.filter(function(val, index) {
-      return item !== val;
+  onComplete(id) {
+    $.ajax({
+      url:  'http://localhost/ReactTodolist/todo-app/src/complete.php?id='+id,
+      dataType: 'json',
+      cache: false,
+      success: function(data) {
+        this.setState({completed: data});
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(status, err.toString());
+      }
     });
-
-    var updatedTodosCompleted = this.state.completed;
-    updatedTodosCompleted.unshift(item);
-    this.setState({
-      todos: updatedTodos,
-      completed: updatedTodosCompleted
-    });
-    // update localStorage
-    localStorage.setItem("completed", JSON.stringify(updatedTodosCompleted));
-    localStorage.setItem("todos", JSON.stringify(updatedTodos));
+    this.fetchAll();
   }
   onDeleteCompleted(item) {
     var updatedTodos = this.state.completed.filter(function(val, index) {
@@ -158,6 +158,21 @@ class TodoComponent extends Component {
     localStorage.setItem("completed", JSON.stringify(updatedTodosCompleted));
   }
 
+   fetchAll(){
+    $.ajax({
+      url:  'http://localhost/ReactTodolist/todo-app/src/server.php',
+      dataType: 'json',
+      cache: false,
+      success: function(data) {
+        this.setState({data: data.todos,completed:data.completed});
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(status, err.toString());
+      }
+    });
+
+    }
+
   // lifcylce functions
   /* componentWillMount(){
           console.log('componentWillMount');
@@ -172,7 +187,11 @@ class TodoComponent extends Component {
 
         }*/
 
-  componentDidMount() {}
+  componentDidMount() {
+     this.fetchAll();
+
+
+  }
 }
 
 export default App;

@@ -3,5 +3,4 @@ add id in todos array
 
 this.children
 
-add created date in addIem component
-add created date in dnd  component
+connect with mysql and nodejs
