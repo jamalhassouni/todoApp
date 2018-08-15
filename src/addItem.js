@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import moment from "moment";
 import "./addItem.css"
 class AddItem extends Component{
 constructor(props){
@@ -22,8 +21,6 @@ render(){
 }
 // custom functions
 handleSubmit(e){
- var  createdAt = moment().unix();
- console.log(moment.unix(createdAt).format('MMM Do YYYY @ h:mm:ss a'));
     e.preventDefault();
      if(this.refs.newItem.value.trim()){
       this.props.onAdd(this.refs.newItem.value);
