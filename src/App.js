@@ -119,7 +119,7 @@ class TodoComponent extends Component {
       dataType: 'json',
       cache: false,
       success: function(data) {
-        this.setState({completed: data});
+        this.setState({data: data.todos,completed:data.completed});
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(status, err.toString());

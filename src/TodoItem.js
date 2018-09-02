@@ -126,12 +126,13 @@ class TodoItem extends Component {
       console.log(e.currentTarget);
       console.log(e.target);
       let id = e.currentTarget.parentNode.parentNode.dataset.id;
+      let key = e.currentTarget.parentNode.parentNode.dataset.index;
       console.log("id",id);
       this.setState({
         idEdited: id
       });
-      let item = this.props.todos[id].item;
-      console.log(item,id);
+      let item = this.props.todos[key].item;
+      console.log("item edited:",item,id);
       this.props.onComplete(id);
     }
   }

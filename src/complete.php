@@ -8,14 +8,18 @@ if (isset($_GET['id'])) {
     $id = filter_var($_GET['id'], FILTER_VALIDATE_INT);
     if (!empty($id)) {
         $completDate = date("Y-m-d H:i:s");
-    $updated = mysqli_query($con, "UPDATE  todo SET todoStatu=2,completDate='$completDate' WHERE id=$id ");
-    if (isset($updated)) {
-     $query = mysqli_query($con, "SELECT  * from todo WHERE todoStatu=2 ");
-      while ($data = mysqli_fetch_object($query)) {
-             $output[] = $data;
-         }
+        $updated = mysqli_query($con, "UPDATE  todo SET todoStatu=2,completDate='$completDate' WHERE id=$id ");
+        if (isset($updated)) {
+            $query = mysqli_query($con, "SELECT * from todo WHERE todoStatu=1");
+            while ($data = mysqli_fetch_object($query)) {
+                $output["todos"][] = $data;
+            }
+            $query = mysqli_query($con, "SELECT * from todo WHERE todoStatu=2");
+            while ($data = mysqli_fetch_object($query)) {
+                $output["completed"][] = $data;
+            }
         } else {
-          $output['msg'] = "error cannot execute query ";
+            $output['msg'] = "error cannot execute query ";
 
         }
 
