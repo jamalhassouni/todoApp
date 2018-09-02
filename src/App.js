@@ -14,10 +14,7 @@ const browserHandler = {
   chrome: () => <div className="cover-bar" />,
   firefox: () => <div className="cover-bar width-15" />
 };
-var  cachedCompleted;
-localStorage.getItem("completed") == null || undefined
-  ? (cachedCompleted = [])
-  : (cachedCompleted = JSON.parse(localStorage.getItem("completed")));
+
 const history = createBrowserHistory();
 class App extends Component {
   render() {
@@ -153,9 +150,6 @@ class TodoComponent extends Component {
       todos: updatedTodos,
       completed: updatedTodosCompleted
     });
-    // update localStorage
-    localStorage.setItem("todos", JSON.stringify(updatedTodos));
-    localStorage.setItem("completed", JSON.stringify(updatedTodosCompleted));
   }
 
    fetchAll(){
