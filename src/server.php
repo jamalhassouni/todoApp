@@ -4,8 +4,10 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: *");
 require_once "config.php";
 $output = array();
-if (isset($_GET['todo'])) {
-    $item = filter_var($_GET['todo'], FILTER_SANITIZE_STRING);
+$request_body = file_get_contents('php://input');
+$request = json_decode($request_body);
+if (isset($request->todo)) {
+    $item = filter_var($request->todo, FILTER_SANITIZE_STRING);
     if (!empty($item)) {
         $insert = mysqli_query($con, "INSERT INTO todo (item,todoStatu) VALUES ('$item',1)");
         if (isset($insert)) {
