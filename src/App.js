@@ -30,6 +30,7 @@ class TodoComponent extends Component {
     this.onDelete = this.onDelete.bind(this);
     this.onAdd = this.onAdd.bind(this);
     this.onComplete = this.onComplete.bind(this);
+    this.onEdit = this.onEdit.bind(this);
     this.state = {
       data: [],
       completed: []
@@ -50,16 +51,17 @@ class TodoComponent extends Component {
             <TodoItem
               todos={this.state.data}
               onDelete={this.onDelete}
+              onEdit={this.onEdit}
               onComplete={this.onComplete}
             />
           </div>
           {/* Completed tasks */}
           <div className="col-md-6">
-          <CompletedItem
-            todos= {this.state.completed}
-            onDelete={this.onDelete}
-            onComplete={this.onComplete}
-          />
+            <CompletedItem
+              todos={this.state.completed}
+              onDelete={this.onDelete}
+              onComplete={this.onComplete}
+            />
           </div>
         </div>
       </div>
@@ -73,11 +75,13 @@ class TodoComponent extends Component {
       body: JSON.stringify({ delete: id }) // body data type must match "Content-Type" header
     })
       .then(response => response.json()) // parses response to JSON
-      .then((data) => // update state
-      this.setState({
-        data: data.todos,
-        completed: data.completed
-      })
+      .then((
+        data // update state
+      ) =>
+        this.setState({
+          data: data.todos,
+          completed: data.completed
+        })
       );
   }
   onAdd(item) {
@@ -87,7 +91,9 @@ class TodoComponent extends Component {
       body: JSON.stringify({ todo: item }) // body data type must match "Content-Type" header
     })
       .then(response => response.json()) // parses response to JSON
-      .then((data) => // update state
+      .then((
+        data // update state
+      ) =>
         this.setState({
           data: data.todos
         })
@@ -100,7 +106,7 @@ class TodoComponent extends Component {
       body: JSON.stringify({ id: id, type: type }) // body data type must match "Content-Type" header
     })
       .then(response => response.json()) // parses response to JSON
-      .then((data) => // update state
+      .then((data ) => // update state
         this.setState({
           data: data.todos,
           completed: data.completed
@@ -108,6 +114,20 @@ class TodoComponent extends Component {
       );
   }
 
+  onEdit(id, item) {
+    fetch(`http://localhost/ReactTodolist/todo-app/src/server.php`, {
+      method: "POST",
+      headers: new Headers(),
+      body: JSON.stringify({ edit: id, item: item }) // body data type must match "Content-Type" header
+    })
+  .then(response => response.json()) // parses response to JSON
+  .then(data =>
+    this.setState({
+      data: data.todos,
+      completed: data.completed
+    })
+  )
+  }
 
   fetchAll() {
     fetch(`http://localhost/ReactTodolist/todo-app/src/server.php`)
@@ -119,7 +139,7 @@ class TodoComponent extends Component {
           data: data.todos,
           completed: data.completed
         })
-     )
+      )
       // Catch any errors we hit and update the app
       .catch(error => console.error(error));
   }
