@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Router, Route, Link } from "react-router-dom";
 import createBrowserHistory from "history/createBrowserHistory";
-import  $ from "jquery";
 import "./App.css";
 import "./dnd.css";
 // Module requires
@@ -51,11 +50,11 @@ class TodoComponent extends Component {
         return (
           <CompletedItem
             item={data.item}
-            data-id={data.id}
+            id={data.id}
             data-index={index}
             key={index}
             onDelete={this.onDeleteCompleted}
-            onReAdded={this.onReAdded}
+            onComplete={this.onComplete}
           />
         );
       }.bind(this)
@@ -99,33 +98,32 @@ class TodoComponent extends Component {
     // update localStorage
     localStorage.setItem("todos", JSON.stringify(updatedTodos));
   }
-    onAdd(item) {
-    $.ajax({
-      url:  'http://localhost/ReactTodolist/todo-app/src/server.php?todo='+item,
-      dataType: 'json',
-      cache: false,
-      success: function(data) {
-        this.setState({data: data.todos});
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.error(status, err.toString());
-      }
-    });
-    this.fetchAll();
+  onAdd(item) {
+    fetch(`http://localhost/ReactTodolist/todo-app/src/server.php`, {
+      method: "POST",
+      headers: new Headers(),
+      body: JSON.stringify({ todo: item }) // body data type must match "Content-Type" header
+    })
+      .then(response => response.json()) // parses response to JSON
+      .then((data) => // update state
+        this.setState({
+          data: data.todos
+        })
+      );
   }
-  onComplete(id) {
-    $.ajax({
-      url:  'http://localhost/ReactTodolist/todo-app/src/complete.php?id='+id,
-      dataType: 'json',
-      cache: false,
-      success: function(data) {
-        this.setState({data: data.todos,completed:data.completed});
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.error(status, err.toString());
-      }
-    });
-    this.fetchAll();
+  onComplete(id, type) {
+    fetch(`http://localhost/ReactTodolist/todo-app/src/complete.php`, {
+      method: "POST",
+      headers: new Headers(),
+      body: JSON.stringify({ id: id, type: type }) // body data type must match "Content-Type" header
+    })
+      .then(response => response.json()) // parses response to JSON
+      .then((data) => // update state
+        this.setState({
+          data: data.todos,
+          completed: data.completed
+        })
+      );
   }
   onDeleteCompleted(item) {
     var updatedTodos = this.state.completed.filter(function(val, index) {
@@ -152,20 +150,20 @@ class TodoComponent extends Component {
     });
   }
 
-   fetchAll(){
-    $.ajax({
-      url:  'http://localhost/ReactTodolist/todo-app/src/server.php',
-      dataType: 'json',
-      cache: false,
-      success: function(data) {
-        this.setState({data: data.todos,completed:data.completed});
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.error(status, err.toString());
-      }
-    });
-
-    }
+  fetchAll() {
+    fetch(`http://localhost/ReactTodolist/todo-app/src/server.php`)
+      // We get the API response and receive data in JSON format...
+      .then(response => response.json())
+      // ...then we update the todos state
+      .then(data =>
+        this.setState({
+          data: data.todos,
+          completed: data.completed
+        })
+      )
+      // Catch any errors we hit and update the app
+      .catch(error => console.error(error));
+  }
 
   // lifcylce functions
   /* componentWillMount(){
@@ -182,9 +180,7 @@ class TodoComponent extends Component {
         }*/
 
   componentDidMount() {
-     this.fetchAll();
-
-
+    this.fetchAll();
   }
 }
 
