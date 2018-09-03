@@ -26,6 +26,19 @@ if (isset($request->todo)) {
 
     }
 
+} elseif (isset($request->delete)) {
+    $id = filter_var($request->delete, FILTER_VALIDATE_INT);
+    $deleted = mysqli_query($con, "DELETE FROM todo WHERE id = $id");
+    if ($deleted) {
+        $query = mysqli_query($con, "SELECT * from todo WHERE todoStatu=1");
+        while ($data = mysqli_fetch_object($query)) {
+            $output["todos"][] = $data;
+        }
+        $query = mysqli_query($con, "SELECT * from todo WHERE todoStatu=2");
+        while ($data = mysqli_fetch_object($query)) {
+            $output["completed"][] = $data;
+        }
+    }
 } else {
 
     $query = mysqli_query($con, "SELECT * from todo WHERE todoStatu=1");
