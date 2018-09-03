@@ -16,11 +16,11 @@ if (isset($request->id)) {
             $completDate = date("Y-m-d H:i:s");
             $updated = mysqli_query($con, "UPDATE  todo SET todoStatu=2,completDate='$completDate' WHERE id=$id ");
             if (isset($updated)) {
-                $query = mysqli_query($con, "SELECT * from todo WHERE todoStatu=1");
+                $query = mysqli_query($con, "SELECT * from todo WHERE todoStatu=1 ORDER BY sort ASC");
                 while ($data = mysqli_fetch_object($query)) {
                     $output["todos"][] = $data;
                 }
-                $query = mysqli_query($con, "SELECT * from todo WHERE todoStatu=2");
+                $query = mysqli_query($con, "SELECT * from todo WHERE todoStatu=2 ORDER BY sort ASC");
                 while ($data = mysqli_fetch_object($query)) {
                     $output["completed"][] = $data;
                 }
@@ -31,11 +31,11 @@ if (isset($request->id)) {
         } else { // if  type = 1  then change statu todo to uncompleted
             $updated = mysqli_query($con, "UPDATE  todo SET todoStatu=1 WHERE id=$id ");
             if (isset($updated)) {
-                $query = mysqli_query($con, "SELECT * from todo WHERE todoStatu=1");
+                $query = mysqli_query($con, "SELECT * from todo WHERE todoStatu=1 ORDER BY sort ASC");
                 while ($data = mysqli_fetch_object($query)) {
                     $output["todos"][] = $data;
                 }
-                $query = mysqli_query($con, "SELECT * from todo WHERE todoStatu=2");
+                $query = mysqli_query($con, "SELECT * from todo WHERE todoStatu=2 ORDER BY sort ASC");
                 while ($data = mysqli_fetch_object($query)) {
                     $output["completed"][] = $data;
                 }

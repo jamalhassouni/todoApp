@@ -11,11 +11,11 @@ if (isset($request->todo)) {
     if (!empty($item)) {
         $insert = mysqli_query($con, "INSERT INTO todo (item,todoStatu) VALUES ('$item',1)");
         if (isset($insert)) {
-            $query = mysqli_query($con, "SELECT * from todo WHERE todoStatu=1");
+            $query = mysqli_query($con, "SELECT * from todo WHERE todoStatu=1 ORDER BY sort ASC");
             while ($data = mysqli_fetch_object($query)) {
                 $output["todos"][] = $data;
             }
-            $query = mysqli_query($con, "SELECT * from todo WHERE todoStatu=2");
+            $query = mysqli_query($con, "SELECT * from todo WHERE todoStatu=2 ORDER BY sort ASC");
             while ($data = mysqli_fetch_object($query)) {
                 $output["completed"][] = $data;
             }
@@ -30,11 +30,11 @@ if (isset($request->todo)) {
     $id = filter_var($request->delete, FILTER_VALIDATE_INT);
     $deleted = mysqli_query($con, "DELETE FROM todo WHERE id = $id");
     if ($deleted) {
-        $query = mysqli_query($con, "SELECT * from todo WHERE todoStatu=1");
+        $query = mysqli_query($con, "SELECT * from todo WHERE todoStatu=1 ORDER BY sort ASC");
         while ($data = mysqli_fetch_object($query)) {
             $output["todos"][] = $data;
         }
-        $query = mysqli_query($con, "SELECT * from todo WHERE todoStatu=2");
+        $query = mysqli_query($con, "SELECT * from todo WHERE todoStatu=2 ORDER BY sort ASC");
         while ($data = mysqli_fetch_object($query)) {
             $output["completed"][] = $data;
         }
@@ -44,11 +44,11 @@ if (isset($request->todo)) {
     $item = filter_var($request->item, FILTER_SANITIZE_STRING);
     $updated = mysqli_query($con, "UPDATE  todo SET item='$item' WHERE id=$id ");
     if (isset($updated)) {
-        $query = mysqli_query($con, "SELECT * from todo WHERE todoStatu=1");
+        $query = mysqli_query($con, "SELECT * from todo WHERE todoStatu=1 ORDER BY sort ASC");
         while ($data = mysqli_fetch_object($query)) {
             $output["todos"][] = $data;
         }
-        $query = mysqli_query($con, "SELECT * from todo WHERE todoStatu=2");
+        $query = mysqli_query($con, "SELECT * from todo WHERE todoStatu=2 ORDER BY sort ASC");
         while ($data = mysqli_fetch_object($query)) {
             $output["completed"][] = $data;
         }
@@ -59,11 +59,11 @@ if (isset($request->todo)) {
 
 } else {
 
-    $query = mysqli_query($con, "SELECT * from todo WHERE todoStatu=1");
+    $query = mysqli_query($con, "SELECT * from todo WHERE todoStatu=1 ORDER BY sort ASC");
     while ($data = mysqli_fetch_object($query)) {
         $output["todos"][] = $data;
     }
-    $query = mysqli_query($con, "SELECT * from todo WHERE todoStatu=2");
+    $query = mysqli_query($con, "SELECT * from todo WHERE todoStatu=2 ORDER BY sort ASC");
     while ($data = mysqli_fetch_object($query)) {
         $output["completed"][] = $data;
     }
