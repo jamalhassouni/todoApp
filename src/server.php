@@ -39,6 +39,24 @@ if (isset($request->todo)) {
             $output["completed"][] = $data;
         }
     }
+} elseif (isset($request->edit) and isset($request->item)) {
+    $id = filter_var($request->edit, FILTER_VALIDATE_INT);
+    $item = filter_var($request->item, FILTER_SANITIZE_STRING);
+    $updated = mysqli_query($con, "UPDATE  todo SET item='$item' WHERE id=$id ");
+    if (isset($updated)) {
+        $query = mysqli_query($con, "SELECT * from todo WHERE todoStatu=1");
+        while ($data = mysqli_fetch_object($query)) {
+            $output["todos"][] = $data;
+        }
+        $query = mysqli_query($con, "SELECT * from todo WHERE todoStatu=2");
+        while ($data = mysqli_fetch_object($query)) {
+            $output["completed"][] = $data;
+        }
+    } else {
+        $output['msg'] = "error cannot execute query ";
+
+    }
+
 } else {
 
     $query = mysqli_query($con, "SELECT * from todo WHERE todoStatu=1");
