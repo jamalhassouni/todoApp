@@ -93,9 +93,10 @@ class TodoItem extends Component {
       if (idEdited !== -1) {
         items[idEdited] = this.refs.input.value;
         console.log("id updated", this.state.idEdited);
+        console.log("items", this.refs.input.value);
+        this.props.onEdit(idEdited,this.refs.input.value);
       }
       this.setState({
-        todos: items,
         idEdited: null
       });
     }
