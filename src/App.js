@@ -31,6 +31,7 @@ class TodoComponent extends Component {
     this.onAdd = this.onAdd.bind(this);
     this.onComplete = this.onComplete.bind(this);
     this.onEdit = this.onEdit.bind(this);
+    this.onSort = this.onSort.bind(this);
     this.state = {
       data: [],
       completed: []
@@ -52,6 +53,7 @@ class TodoComponent extends Component {
               todos={this.state.data}
               onDelete={this.onDelete}
               onEdit={this.onEdit}
+              onSort={this.onSort}
               onComplete={this.onComplete}
             />
           </div>
@@ -119,6 +121,21 @@ class TodoComponent extends Component {
       method: "POST",
       headers: new Headers(),
       body: JSON.stringify({ edit: id, item: item }) // body data type must match "Content-Type" header
+    })
+  .then(response => response.json()) // parses response to JSON
+  .then(data =>
+    this.setState({
+      data: data.todos,
+      completed: data.completed
+    })
+  )
+  }
+
+  onSort(From,PosFrom,To,PosTo){
+    fetch(`http://localhost/ReactTodolist/todo-app/src/sort.php`, {
+      method: "POST",
+      headers: new Headers(),
+      body: JSON.stringify({ from:From, posFrom: PosFrom, to:To,posTo:PosTo }) // body data type must match "Content-Type" header
     })
   .then(response => response.json()) // parses response to JSON
   .then(data =>
