@@ -27,7 +27,7 @@ class CompletedItem extends Component {
   this.props.onDelete(this.props.item);
   }
   handleReAdded(){
-    this.props.onReAdded(this.props.item);
+    this.props.onComplete(this.props.id,1);
   }
 
   }

@@ -133,7 +133,7 @@ class TodoItem extends Component {
       });
       let item = this.props.todos[key].item;
       console.log("item edited:",item,id);
-      this.props.onComplete(id);
+      this.props.onComplete(id,2);
     }
   }
 
