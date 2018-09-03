@@ -88,12 +88,7 @@ class TodoItem extends Component {
     var charCode = e.keyCode || e.which;
     var idEdited = this.state.idEdited;
     if (charCode === 13) {
-      console.log("id", this.state.idEdited);
-      var items = this.props.todos;
       if (idEdited !== -1) {
-        items[idEdited] = this.refs.input.value;
-        console.log("id updated", this.state.idEdited);
-        console.log("items", this.refs.input.value);
         this.props.onEdit(idEdited,this.refs.input.value);
       }
       this.setState({
@@ -102,16 +97,12 @@ class TodoItem extends Component {
     }
   }
   handleEdit(e) {
-    console.log("this parent", e.currentTarget);
-    console.log("this children", e.target);
     if (e.target === e.currentTarget) {
-      console.log("idedited", this.state.idEdited);
       let item = e.currentTarget;
       let id = item.dataset.id;
       this.setState({
         idEdited: id
       });
-      console.log("id", id, "cureent id", this.state.idEdited);
     } else {
       this.setState({
         idEdited: null
@@ -141,7 +132,6 @@ class TodoItem extends Component {
     const from = isFinite(dragging) ? dragging : this.dragged;
     let to = Number(key);
     items.splice(to, 0, items.splice(from, 1)[0]);
-    console.log("over to ", to);
     this.sort(items, to);
   }
 
@@ -160,7 +150,6 @@ class TodoItem extends Component {
     e.dataTransfer.effectAllowed = "move";
     e.dataTransfer.setData("text/plain", null);
     this.dragged = Number(key);
-    console.log("id draged", this.dragged);
   }
   Drop(e) {
     e.preventDefault();
@@ -171,10 +160,11 @@ class TodoItem extends Component {
     let to = Number(key);
     items.splice(to, 0, items.splice(from, 1)[0]);
     this.sort(items, to);
-    console.log("data droped", items);
-    console.log("droped to", key);
-    console.log("droped from ", this.dragged);
-    console.log("droped");
+    let From = items[this.dragged].id,
+    PosFrom = items[this.dragged].sort,
+    To = items[key].id,
+    PosTo = items[key].sort ;
+    this.props.onSort(From,PosFrom,To,PosTo);
   }
 
   sort(list, dragging) {
