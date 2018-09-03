@@ -8,8 +8,9 @@ $request_body = file_get_contents('php://input');
 $request = json_decode($request_body);
 if (isset($request->todo)) {
     $item = filter_var($request->todo, FILTER_SANITIZE_STRING);
-    if (!empty($item)) {
-        $insert = mysqli_query($con, "INSERT INTO todo (item,todoStatu) VALUES ('$item',1)");
+    $pos = filter_var($request->pos, FILTER_VALIDATE_INT);
+    if (!empty($item) AND !empty($pos)) {
+        $insert = mysqli_query($con, "INSERT INTO todo (item,todoStatu,sort) VALUES ('$item',1,$pos)");
         if (isset($insert)) {
             $query = mysqli_query($con, "SELECT * from todo WHERE todoStatu=1 ORDER BY sort ASC");
             while ($data = mysqli_fetch_object($query)) {

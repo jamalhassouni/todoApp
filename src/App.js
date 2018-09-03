@@ -41,7 +41,7 @@ class TodoComponent extends Component {
   render() {
     return (
       <div id="todo-list" className="container">
-        <AddItem onAdd={this.onAdd} ref="add" />
+        <AddItem todos={this.state.data} onAdd={this.onAdd} ref="add" />
         <nav className="cl-effect">
           <Link to={"/about"}>About</Link>
         </nav>
@@ -75,9 +75,10 @@ class TodoComponent extends Component {
       delete: id
     });
   }
-  onAdd(item) {
+  onAdd(item,pos) {
     this.postData(`http://localhost/ReactTodolist/todo-app/src/server.php`, {
-      todo: item
+      todo: item,
+      pos:pos
     });
   }
   onComplete(id, type) {

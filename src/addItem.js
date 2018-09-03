@@ -26,7 +26,9 @@ class AddItem extends Component {
   handleSubmit(e) {
     e.preventDefault();
     if (this.refs.newItem.value.trim()) {
-      this.props.onAdd(this.refs.newItem.value);
+      let pos = Number(this.props.todos.slice(-1)[0].sort) + 1;
+      let item = this.refs.newItem.value;
+      this.props.onAdd(item, pos);
       this.refs.newItem.value = "";
     }
   }
