@@ -71,79 +71,36 @@ class TodoComponent extends Component {
   } // render
   //custom functions
   onDelete(id) {
-    fetch(`http://localhost/ReactTodolist/todo-app/src/server.php`, {
-      method: "POST",
-      headers: new Headers(),
-      body: JSON.stringify({ delete: id }) // body data type must match "Content-Type" header
-    })
-      .then(response => response.json()) // parses response to JSON
-      .then((
-        data // update state
-      ) =>
-        this.setState({
-          data: data.todos,
-          completed: data.completed
-        })
-      );
+    this.postData(`http://localhost/ReactTodolist/todo-app/src/server.php`, {
+      delete: id
+    });
   }
   onAdd(item) {
-    fetch(`http://localhost/ReactTodolist/todo-app/src/server.php`, {
-      method: "POST",
-      headers: new Headers(),
-      body: JSON.stringify({ todo: item }) // body data type must match "Content-Type" header
-    })
-      .then(response => response.json()) // parses response to JSON
-      .then((
-        data // update state
-      ) =>
-        this.setState({
-          data: data.todos
-        })
-      );
+    this.postData(`http://localhost/ReactTodolist/todo-app/src/server.php`, {
+      todo: item
+    });
   }
   onComplete(id, type) {
-    fetch(`http://localhost/ReactTodolist/todo-app/src/complete.php`, {
-      method: "POST",
-      headers: new Headers(),
-      body: JSON.stringify({ id: id, type: type }) // body data type must match "Content-Type" header
-    })
-      .then(response => response.json()) // parses response to JSON
-      .then((data ) => // update state
-        this.setState({
-          data: data.todos,
-          completed: data.completed
-        })
-      );
+    this.postData(`http://localhost/ReactTodolist/todo-app/src/complete.php`, {
+      id: id,
+      type: type
+    });
   }
 
   onEdit(id, item) {
-    fetch(`http://localhost/ReactTodolist/todo-app/src/server.php`, {
-      method: "POST",
-      headers: new Headers(),
-      body: JSON.stringify({ edit: id, item: item }) // body data type must match "Content-Type" header
-    })
-  .then(response => response.json()) // parses response to JSON
-  .then(data =>
-    this.setState({
-      data: data.todos,
-      completed: data.completed
-    })
-  )
+    this.postData(`http://localhost/ReactTodolist/todo-app/src/server.php`, {
+      edit: id,
+      item: item
+    });
   }
 
-  onSort(From,PosFrom,To,PosTo){
-    fetch(`http://localhost/ReactTodolist/todo-app/src/sort.php`, {
-      method: "POST",
-      headers: new Headers(),
-      body: JSON.stringify({ from:From, posFrom: PosFrom, to:To,posTo:PosTo }) // body data type must match "Content-Type" header
-    })
-  .then(response => response.json()) // parses response to JSON
-  .then(data =>
-    this.setState({
-      data: data.todos,
-      completed: data.completed
-    })
-  )
+  onSort(From, PosFrom, To, PosTo) {
+    this.postData(`http://localhost/ReactTodolist/todo-app/src/sort.php`, {
+      from: From,
+      posFrom: PosFrom,
+      to: To,
+      posTo: PosTo
+    });
   }
 
   fetchAll() {
@@ -159,6 +116,34 @@ class TodoComponent extends Component {
       )
       // Catch any errors we hit and update the app
       .catch(error => console.error(error));
+  }
+
+  postData(url = ``, data = {}) {
+    // Default options are marked with *
+    return (
+      fetch(url, {
+        method: "POST", // *GET, POST, PUT, DELETE, etc.
+        mode: "cors", // no-cors, cors, *same-origin
+        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: "same-origin", // include, same-origin, *omit
+        headers: {
+          "Content-Type": "application/json; charset=utf-8"
+          // "Content-Type": "application/x-www-form-urlencoded",
+        },
+        redirect: "follow", // manual, *follow, error
+        referrer: "no-referrer", // no-referrer, *client
+        body: JSON.stringify(data) // body data type must match "Content-Type" header
+      })
+        .then(response => response.json()) // parses response to JSON
+        .then(data =>
+          this.setState({
+            data: data.todos,
+            completed: data.completed
+          })
+        )
+        // Catch any errors we hit and update the app
+        .catch(error => console.error(error))
+    );
   }
 
   // lifcylce functions
