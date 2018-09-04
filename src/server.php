@@ -2,6 +2,7 @@
 header("Content-Type: application/json");
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: *");
+header("Access-Control-Allow-Methods:GET, POST, OPTIONS, PUT, DELETE");
 require_once "config.php";
 $output = array();
 $request_body = file_get_contents('php://input');
