@@ -890,7 +890,7 @@ ul.todo#todo:after,ul.todo#completed:after {
     border: 2px dashed #25b99a;
   }
 /*================== todo =====================*/
-ul.todo li {
+ul.todo li:not(.editable) {
   width: 100%;
   min-height: 50px;
   float: left;
@@ -907,6 +907,9 @@ ul.todo li {
   padding: 14px 100px 14px 14px;
   word-break: break-word;
 }
+ul.todo li.editable {
+  position: relative;
+}
 /*
 ul.todo li:last-of-type {
   margin: 0;
@@ -919,6 +922,9 @@ ul.todo li .buttons {
   position: absolute;
   top: 0;
   right: 0;
+}
+ul.todo li.editable .buttons {
+  right: -54px; 
 }
 
 
@@ -937,7 +943,7 @@ ul.todo li .buttons button {
   -moz-appearance: none;
 }
 
-li {
+li:not(.editable) {
   padding: 10px 15px;
   background: #eee;
 }
@@ -969,11 +975,10 @@ font-weight: 500;
 color: #444;
 line-height: 22px;
 border-radius: 5px;
-position: relative;
 -webkit-box-shadow: 0px 1px 2px rgba(44, 62, 80, 0.10);
 box-shadow: 0px 1px 2px rgba(44, 62, 80, 0.10);
 margin: 0 0 10px 0;
-padding: 14px 100px 14px 14px;
+padding: 14px 53px 14px 14px;
 word-break: break-word;
 }
 
