@@ -1,5 +1,4 @@
 import React from "react";
-import './todoItem.css';
 import BrowserDetection from "react-browser-detection";
 const browserHandler = {
   chrome: () => <div className="cover-bar" />,
