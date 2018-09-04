@@ -780,11 +780,11 @@ ul.todo li .buttons button svg .fill {
   transition: fill 0.2s ease;
 }
 
-ul.todo li .buttons button.remove svg .fill {
+ul.todo li .buttons button.remove svg .fill,ul.todo li .buttons button.close svg .fill {
   fill: #c0cecb;
 }
 
-ul.todo li .buttons button.remove:hover svg .fill {
+ul.todo li .buttons button.remove:hover svg .fill,ul.todo li .buttons button.close:hover svg .fill {
   fill: #e85656;
 }
 ul.todo li .buttons button.complete svg .fill {
