@@ -115,13 +115,11 @@ class TodoItem extends Component {
     this.props.onDelete(id);
   }
   handleComplete(e) {
-    if (e.target === e.currentTarget) {
       let id = e.currentTarget.parentNode.parentNode.dataset.id;
       this.setState({
         idEdited: id
       });
       this.props.onComplete(id,2);
-    }
   }
 
   dragOver(e) {
