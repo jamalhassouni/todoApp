@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import BrowserDetection from "react-browser-detection";
-import  { removeSVG,completeSVG } from "../../../utils/icons";
+import  { removeSVG,completeSVG,closeSVG } from "../../../utils/icons";
 
 const browserHandler = {
   chrome: () => <div className="cover-bar" />,
@@ -26,15 +26,23 @@ class Uncompleted extends Component {
         // eslint-disable-next-line
         if (data.id === this.state.idEdited) {
           return (
+            <li key={index} className="editable">
             <input
               className="inputedit"
               ref="input"
-              key={index}
               type="text"
               onKeyPress={this.handleSave.bind(this)}
               defaultValue={data.item}
               id={data.id}
             />
+            <div className="buttons">
+                <button
+                  className="close"
+                  onClick={this.handleDelete}
+                  dangerouslySetInnerHTML={{ __html: closeSVG }}
+                />
+              </div>
+            </li>
           );
         } else {
           return (
