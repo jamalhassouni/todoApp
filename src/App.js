@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Router, Route, Link } from "react-router-dom";
-import createBrowserHistory from "history/createBrowserHistory";
+import { Route, Link } from "react-router-dom";
 import "./App.css";
 // Module requires
 import AddItem from "./addItem";
@@ -8,16 +7,13 @@ import About from "./about";
 import TodoItem from "./TodoItem";
 import CompletedItem from "./completedItem";
 import * as TodosAPI from "./utils/TodosAPI";
-const history = createBrowserHistory();
 class App extends Component {
   render() {
     return (
-      <Router history={history}>
-        <div>
-          <Route exact path={"/"} component={TodoComponent} />
-          <Route path={"/about"} component={About} />
-        </div>
-      </Router>
+      <div className="app">
+        <Route exact path={"/"} component={TodoComponent} />
+        <Route path={"/about"} component={About} />
+      </div>
     );
   }
 }
