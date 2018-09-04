@@ -92,7 +92,6 @@ class Todo extends Component {
         <p>The busiest people have the most leisure...</p>
         <div className="row">
           {/* Uncompleted tasks  */}
-          <div className="col-md-6">
             <Uncompleted
               todos={this.state.data}
               onDelete={this.onDelete}
@@ -100,15 +99,13 @@ class Todo extends Component {
               onSort={this.onSort}
               onComplete={this.onComplete}
             />
-          </div>
+
           {/* Completed tasks */}
-          <div className="col-md-6">
             <Completed
               todos={this.state.completed}
               onDelete={this.onDelete}
               onComplete={this.onComplete}
             />
-          </div>
         </div>
       </div>
     );

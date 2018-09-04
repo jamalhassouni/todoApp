@@ -76,10 +76,12 @@ class Uncompleted extends Component {
 
    }
     return (
+     <div className="col-md-6">
       <ul className="todo scroll-bar-wrap" id="todo">
         <div className="scroll-box">{list}</div>
         <BrowserDetection>{browserHandler}</BrowserDetection>
       </ul>
+      </div>
     );
   }
   handleSave(e) {

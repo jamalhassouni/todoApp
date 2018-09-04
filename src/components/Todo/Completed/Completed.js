@@ -25,10 +25,12 @@ const Completed = ({todos,onDelete,onComplete}) => {
     );
   }
   return (
+   <div className="col-md-6">
     <ul className="todo scroll-bar-wrap" id="completed">
       <div className="scroll-box">{list}</div>
       <BrowserDetection>{browserHandler}</BrowserDetection>
     </ul>
+    </div>
   );
 
 };
