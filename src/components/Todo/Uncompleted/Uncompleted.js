@@ -5,7 +5,7 @@ const browserHandler = {
   firefox: () => <div className="cover-bar width-15" />
 };
 
-class TodoItem extends Component {
+class Uncompleted extends Component {
   constructor(props) {
     super(props);
     this.handleDelete = this.handleDelete.bind(this);
@@ -172,8 +172,7 @@ class TodoItem extends Component {
     this.setState({ state });
   }
 
-  componentDidMount() {}
-  componentWillUpdate() {}
+
 }
 
-export default TodoItem;
+export default Uncompleted;

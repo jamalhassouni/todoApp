@@ -1,25 +1,11 @@
 import React, { Component } from "react";
-import { Route, Link } from "react-router-dom";
-import "./App.css";
-// Module requires
-import AddItem from "./addItem";
-import About from "./about";
-import TodoItem from "./TodoItem";
-import CompletedItem from "./completedItem";
-import * as TodosAPI from "./utils/TodosAPI";
-class App extends Component {
-  render() {
-    return (
-      <div className="app">
-        <Route exact path={"/"} component={TodoComponent} />
-        <Route path={"/about"} component={About} />
-      </div>
-    );
-  }
-}
+import { Link } from "react-router-dom";
+import AddItem from "./Add/addItem";
+import Uncompleted from "./Uncompleted/Uncompleted";
+import Completed from "./Completed/Completed";
+import * as TodosAPI from "../../utils/TodosAPI";
 
-// Create component
-class TodoComponent extends Component {
+class Todo extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -107,7 +93,7 @@ class TodoComponent extends Component {
         <div className="row">
           {/* Uncompleted tasks  */}
           <div className="col-md-6">
-            <TodoItem
+            <Uncompleted
               todos={this.state.data}
               onDelete={this.onDelete}
               onEdit={this.onEdit}
@@ -117,7 +103,7 @@ class TodoComponent extends Component {
           </div>
           {/* Completed tasks */}
           <div className="col-md-6">
-            <CompletedItem
+            <Completed
               todos={this.state.completed}
               onDelete={this.onDelete}
               onComplete={this.onComplete}
@@ -129,4 +115,4 @@ class TodoComponent extends Component {
   } // render
 }
 
-export default App;
+export default Todo;

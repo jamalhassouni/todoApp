@@ -1,6 +1,11 @@
-fix edited  todo id
-add id in todos array
+done fix edited  todo id
+done fix oncomplete in  completed todos
+done add sort column in db and use  it in  drag and drop
+done fix ondelete
+done fix onedit
 
-this.children
+fix  sort when user add new todo
+fix sort in oncomplete
+create Todo Component and  add  TodoItem and   completedItem in him
+create Components folder  and put him all Components
 
-connect with mysql and nodejs
