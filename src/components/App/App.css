@@ -1,6 +1,5 @@
-#root{
+#root {
   padding: 15px;
-
 }
 
 #root p {
@@ -39,13 +38,71 @@
   margin-left: -15px;
   margin-right: -15px;
 }
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+.col-xs-1,
+.col-sm-1,
+.col-md-1,
+.col-lg-1,
+.col-xs-2,
+.col-sm-2,
+.col-md-2,
+.col-lg-2,
+.col-xs-3,
+.col-sm-3,
+.col-md-3,
+.col-lg-3,
+.col-xs-4,
+.col-sm-4,
+.col-md-4,
+.col-lg-4,
+.col-xs-5,
+.col-sm-5,
+.col-md-5,
+.col-lg-5,
+.col-xs-6,
+.col-sm-6,
+.col-md-6,
+.col-lg-6,
+.col-xs-7,
+.col-sm-7,
+.col-md-7,
+.col-lg-7,
+.col-xs-8,
+.col-sm-8,
+.col-md-8,
+.col-lg-8,
+.col-xs-9,
+.col-sm-9,
+.col-md-9,
+.col-lg-9,
+.col-xs-10,
+.col-sm-10,
+.col-md-10,
+.col-lg-10,
+.col-xs-11,
+.col-sm-11,
+.col-md-11,
+.col-lg-11,
+.col-xs-12,
+.col-sm-12,
+.col-md-12,
+.col-lg-12 {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
 }
-.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
+.col-xs-1,
+.col-xs-2,
+.col-xs-3,
+.col-xs-4,
+.col-xs-5,
+.col-xs-6,
+.col-xs-7,
+.col-xs-8,
+.col-xs-9,
+.col-xs-10,
+.col-xs-11,
+.col-xs-12 {
   float: left;
 }
 .col-xs-12 {
@@ -202,7 +259,18 @@
   margin-left: 0%;
 }
 @media (min-width: 768px) {
-  .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
+  .col-sm-1,
+  .col-sm-2,
+  .col-sm-3,
+  .col-sm-4,
+  .col-sm-5,
+  .col-sm-6,
+  .col-sm-7,
+  .col-sm-8,
+  .col-sm-9,
+  .col-sm-10,
+  .col-sm-11,
+  .col-sm-12 {
     float: left;
   }
   .col-sm-12 {
@@ -360,7 +428,18 @@
   }
 }
 @media (min-width: 992px) {
-  .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+  .col-md-1,
+  .col-md-2,
+  .col-md-3,
+  .col-md-4,
+  .col-md-5,
+  .col-md-6,
+  .col-md-7,
+  .col-md-8,
+  .col-md-9,
+  .col-md-10,
+  .col-md-11,
+  .col-md-12 {
     float: left;
   }
   .col-md-12 {
@@ -518,7 +597,18 @@
   }
 }
 @media (min-width: 1200px) {
-  .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
+  .col-lg-1,
+  .col-lg-2,
+  .col-lg-3,
+  .col-lg-4,
+  .col-lg-5,
+  .col-lg-6,
+  .col-lg-7,
+  .col-lg-8,
+  .col-lg-9,
+  .col-lg-10,
+  .col-lg-11,
+  .col-lg-12 {
     float: left;
   }
   .col-lg-12 {
@@ -731,7 +821,7 @@
 }
 
 ul.todo li .buttons button:last-of-type:before {
-  content: '';
+  content: "";
   width: 1px;
   height: 30px;
   background: #edf0f1;
@@ -780,24 +870,28 @@ ul.todo li .buttons button svg .fill {
   transition: fill 0.2s ease;
 }
 
-ul.todo li .buttons button.remove svg .fill,ul.todo li .buttons button.close svg .fill {
+ul.todo li .buttons button.remove svg .fill,
+ul.todo li .buttons button.close svg .fill {
   fill: #c0cecb;
 }
 
-ul.todo li .buttons button.remove:hover svg .fill,ul.todo li .buttons button.close:hover svg .fill {
+ul.todo li .buttons button.remove:hover svg .fill,
+ul.todo li .buttons button.close:hover svg .fill {
   fill: #e85656;
 }
 ul.todo li .buttons button.complete svg .fill {
   fill: #25b99a;
 }
 
-ul.todo#completed,ul.todo#todo{
+ul.todo#completed,
+ul.todo#todo {
   position: relative;
   padding: 60px 0 0 0;
 }
 
-ul.todo#completed:before,ul.todo#todo:before {
-  content: '';
+ul.todo#completed:before,
+ul.todo#todo:before {
+  content: "";
   width: 150px;
   height: 1px;
   background: #d8e5e0;
@@ -807,88 +901,86 @@ ul.todo#completed:before,ul.todo#todo:before {
   margin: 0 0 0 -75px;
 }
 
-
 ul.todo#todo:empty:after {
-  content: 'You have nothing to-do!';
+  content: "You have nothing to-do!";
   margin: 15px 0 0 0;
 }
 
-
 ul.todo#completed:empty:after {
-  content: 'You have yet to complete any tasks.';
+  content: "You have yet to complete any tasks.";
 }
 
-ul.todo#todo:after,ul.todo#completed:after {
+ul.todo#todo:after,
+ul.todo#completed:after {
   width: 100%;
   display: block;
   text-align: center;
   font-size: 12px;
   color: #aaa;
 }
-  .scroll-box {
-    width: 100%;
-    height: 360px;
-    overflow-x: hidden;
-    padding: 13px;
-    position: relative;
-  }
-  .scroll-box::-webkit-scrollbar {
-    width: .4em;
-    height: 10px;
-
-  }
-  .scroll-box::-webkit-scrollbar,
-  .scroll-box::-webkit-scrollbar-thumb {
-    overflow:visible;
-    border-radius: 4px;
-  }
-  .scroll-box::-moz-scrollbar,
-  .scroll-box::-moz-scrollbar-thumb {
-    overflow:visible;
-    border-radius: 4px;
-  }
-  .scroll-box::-webkit-scrollbar-thumb {
-    background: #555;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: #25b99a;
-    }
-  .cover-bar {
-    position: absolute;
-    background: #edf0f1;
-    height: 100%;
-    top: 0;
-    right: 0;
-    width: .4em;
-    transition: all .5s;
-    opacity: 1;
-  }
-  .width-15{
-  width:15px !important;
-  }
-  /* MAGIC HAPPENS HERE */
-  .scroll-bar-wrap:hover .cover-bar {
-     opacity: 0;
-    transition: all .5s;
-  }
-  .scroll-bar-wrap:hover .scroll-box{
-    z-index: 1;
-  }
-  .dragElem {
-    opacity: 0.4;
-   }
-   [draggable] {
-    -moz-user-select: none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    user-select: none;
-    /* Required to make elements draggable in old WebKit */
-    -khtml-user-drag: element;
-    -webkit-user-drag: element;
-  }
-  .dragging {
-    border: 2px dashed #25b99a;
-  }
+.scroll-box {
+  width: 100%;
+  height: 360px;
+  overflow-x: hidden;
+  padding: 13px;
+  position: relative;
+}
+.scroll-box::-webkit-scrollbar {
+  width: 0.4em;
+  height: 10px;
+}
+.scroll-box::-webkit-scrollbar,
+.scroll-box::-webkit-scrollbar-thumb {
+  overflow: visible;
+  border-radius: 4px;
+}
+.scroll-box::-moz-scrollbar,
+.scroll-box::-moz-scrollbar-thumb {
+  overflow: visible;
+  border-radius: 4px;
+}
+.scroll-box::-webkit-scrollbar-thumb {
+  background: #555;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #25b99a;
+}
+.cover-bar {
+  position: absolute;
+  background: #edf0f1;
+  height: 100%;
+  top: 0;
+  right: 0;
+  width: 0.4em;
+  transition: all 0.5s;
+  opacity: 1;
+}
+.width-15 {
+  width: 15px !important;
+}
+/* MAGIC HAPPENS HERE */
+.scroll-bar-wrap:hover .cover-bar {
+  opacity: 0;
+  transition: all 0.5s;
+}
+.scroll-bar-wrap:hover .scroll-box {
+  z-index: 1;
+}
+.dragElem {
+  opacity: 0.4;
+}
+[draggable] {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  /* Required to make elements draggable in old WebKit */
+  -khtml-user-drag: element;
+  -webkit-user-drag: element;
+}
+.dragging {
+  border: 2px dashed #25b99a;
+}
 /*================== todo =====================*/
 ul.todo li:not(.editable) {
   width: 100%;
@@ -902,32 +994,57 @@ ul.todo li:not(.editable) {
   background: #fff;
   border-radius: 5px;
   position: relative;
-  box-shadow: 0px 1px 2px rgba(44, 62, 80, 0.10);
+  box-shadow: 0px 1px 2px rgba(44, 62, 80, 0.1);
   margin: 0 0 10px 0;
   padding: 14px 100px 14px 14px;
   word-break: break-word;
 }
 ul.todo li.editable {
   position: relative;
+  background: #fff;
+  border: 0px;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  min-height: 50px;
+  float: left;
+  font-size: 14px;
+  font-weight: 500;
+  color: #444;
+  line-height: 22px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 1px 2px rgba(44, 62, 80, 0.1);
+  box-shadow: 0px 1px 2px rgba(44, 62, 80, 0.1);
+  margin: 0 0 10px 0;
+  word-break: break-word;
+}
+ul.todo li.editable .inputedit {
+  text-indent: 18px;
+  border: 0px;
+  outline: none;
+  width: 100%;
+  min-height: 50px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #444;
+  padding: 14px 53px 14px 14px;
 }
 /*
 ul.todo li:last-of-type {
   margin: 0;
 }*/
-
+ul.todo li.editable .buttons {
+  right: -56px;
+}
 ul.todo li .buttons {
   width: 100px;
   height: 50px;
-
   position: absolute;
   top: 0;
   right: 0;
 }
-ul.todo li.editable .buttons {
-  right: -54px; 
-}
-
-
 ul.todo li .buttons button {
   width: 50px;
   height: 50px;
@@ -959,28 +1076,3 @@ ul#todo li:hover {
   content: "Drop here";
   color: #e1d25a;
 }
-.inputedit{
-text-indent: 18px;
-background: #fff;
-border: 0px;
-outline: none;
--webkit-appearance: none;
--moz-appearance: none;
-appearance: none;
-width: 100%;
-min-height: 50px;
-float: left;
-font-size: 14px;
-font-weight: 500;
-color: #444;
-line-height: 22px;
-border-radius: 5px;
--webkit-box-shadow: 0px 1px 2px rgba(44, 62, 80, 0.10);
-box-shadow: 0px 1px 2px rgba(44, 62, 80, 0.10);
-margin: 0 0 10px 0;
-padding: 14px 53px 14px 14px;
-word-break: break-word;
-}
-
-
-
