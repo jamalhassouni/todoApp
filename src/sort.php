@@ -13,8 +13,8 @@ if (isset($request->from) AND isset($request->posFrom) AND isset($request->to) A
     $to = filter_var($request->to, FILTER_VALIDATE_INT);
     $posTo = filter_var($request->posTo, FILTER_VALIDATE_INT);
     if (!empty($from) AND !empty($posFrom) AND !empty($to) AND !empty($posTo)) {
-        $sql = "UPDATE todo SET sort = CASE id WHEN $from THEN  $posTo
-                  WHEN $to THEN $posFrom  END  WHERE id in ($from, $to)";
+        $sql = "UPDATE todo SET sort = CASE id WHEN $from THEN  $posFrom
+                  WHEN $to THEN $posTo  END  WHERE id in ($from, $to)";
       $update = mysqli_query($con,$sql);
       if (isset($update)) {
         $query = mysqli_query($con, "SELECT * from todo WHERE todoStatu=1 ORDER BY sort ASC");
