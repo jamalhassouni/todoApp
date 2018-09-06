@@ -60,11 +60,11 @@ const Uncompleted = ({
             data-id={data.id}
             data-index={index}
             key={index}
-            onDrop={e => onDrop(e,1)}
-            onDragOver={e => onDragOver(e,1)}
+            onDrop={e => onDrop(e, 1)}
+            onDragOver={e => onDragOver(e, 1)}
             onDragEnd={() => onDragEnd(1)}
             onDragLeave={() => onDragLeave()}
-            onDragEnter={e => onDragEnter(e,1)}
+            onDragEnter={e => onDragEnter(e, 1)}
             onDragStart={e => onDragStart(e)}
           >
             {data.item}

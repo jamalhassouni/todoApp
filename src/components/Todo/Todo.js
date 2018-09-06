@@ -9,7 +9,7 @@ class Todo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [],
+      uncompleted: [],
       completed: [],
       draggingA: undefined,
       draggingB: undefined,
@@ -21,7 +21,7 @@ class Todo extends Component {
     document.addEventListener("click", this.handleEdit, false);
     TodosAPI.fetchAll().then(data => {
       this.setState({
-        data: data.todos,
+        uncompleted: data.todos,
         completed: data.completed
       });
     });
@@ -71,13 +71,13 @@ class Todo extends Component {
       this.handleClickOutside();
     }
   };
-  onDragOver = (e,type) => {
+  onDragOver = (e, type) => {
     e.preventDefault();
     let items, dragging;
-    if(type === 1){
-      items = this.state.data;
-     dragging = this.state.draggingA;
-    }else if(type ===2){
+    if (type === 1) {
+      items = this.state.uncompleted;
+      dragging = this.state.draggingA;
+    } else if (type === 2) {
       items = this.state.completed;
       dragging = this.state.draggingB;
     }
@@ -85,27 +85,27 @@ class Todo extends Component {
     let dragedFrom = isFinite(dragging) ? dragging : this.dragged;
     let dragedTo = Number(key);
     items.splice(dragedTo, 0, items.splice(dragedFrom, 1)[0]);
-    if(type === 1){
+    if (type === 1) {
       this.setState({
         draggingA: dragedTo
       });
-     }else if(type ===2){
+    } else if (type === 2) {
       this.setState({
         draggingB: dragedTo
       });
-     }
+    }
   };
-  onDragEnd = (type) => {
+  onDragEnd = type => {
     // update state
-    if(type === 1){
+    if (type === 1) {
       this.setState({
         draggingA: undefined
       });
-     }else if(type ===2){
+    } else if (type === 2) {
       this.setState({
         draggingB: undefined
       });
-     }
+    }
   };
   onDragStart = e => {
     let key = e.currentTarget.dataset.index;
@@ -113,28 +113,28 @@ class Todo extends Component {
     e.dataTransfer.setData("text/plain", null);
     this.dragged = Number(key);
   };
-  onDragEnter = (e,type)=> {
+  onDragEnter = (e, type) => {
     let to = Number(e.currentTarget.dataset.index);
-    if(type === 1){
+    if (type === 1) {
       this.setState({
         draggingA: to
       });
-     }else if(type ===2){
+    } else if (type === 2) {
       this.setState({
         draggingB: to
       });
-     }
+    }
   };
 
   onDragLeave = () => {};
 
-  Drop = (e,type) => {
+  Drop = (e, type) => {
     e.preventDefault();
-    let items,dragging;
-    if(type === 1){
-      items = this.state.data;
-     dragging = this.state.draggingA;
-    }else if(type ===2){
+    let items, dragging;
+    if (type === 1) {
+      items = this.state.uncompleted;
+      dragging = this.state.draggingA;
+    } else if (type === 2) {
       items = this.state.completed;
       dragging = this.state.draggingB;
     }
@@ -146,15 +146,15 @@ class Todo extends Component {
       PosFrom = items[dragedFrom].sort,
       ToId = items[dragedFrom].id,
       PosTo = items[this.dragged].sort;
-     if(type === 1){
+    if (type === 1) {
       this.setState({
         draggingA: dragedTo
       });
-     }else if(type ===2){
+    } else if (type === 2) {
       this.setState({
         draggingB: dragedTo
       });
-     }
+    }
 
     this.onSort(FromId, PosFrom, ToId, PosTo);
   };
@@ -163,7 +163,7 @@ class Todo extends Component {
     let url = `http://localhost/ReactTodolist/todo-app/src/server.php`;
     TodosAPI.remove(url, { delete: id, type: type, sort: sort }).then(data => {
       this.setState({
-        data: data.todos,
+        uncompleted: data.todos,
         completed: data.completed
       });
     });
@@ -176,7 +176,7 @@ class Todo extends Component {
       let url = `http://localhost/ReactTodolist/todo-app/src/server.php`;
       TodosAPI.create(url, { todo: item }).then(data => {
         this.setState({
-          data: data.todos,
+          uncompleted: data.todos,
           completed: data.completed
         });
       });
@@ -186,7 +186,7 @@ class Todo extends Component {
     let url = `http://localhost/ReactTodolist/todo-app/src/complete.php`;
     TodosAPI.update(url, { id: id, type: type, sort: sort }).then(data => {
       this.setState({
-        data: data.todos,
+        uncompleted: data.todos,
         completed: data.completed
       });
     });
@@ -196,7 +196,7 @@ class Todo extends Component {
     let url = `http://localhost/ReactTodolist/todo-app/src/server.php`;
     TodosAPI.update(url, { edit: id, item: item }).then(data => {
       this.setState({
-        data: data.todos,
+        uncompleted: data.todos,
         completed: data.completed
       });
     });
@@ -211,7 +211,7 @@ class Todo extends Component {
       posTo: PosTo
     }).then(data => {
       this.setState({
-        data: data.todos,
+        uncompleted: data.todos,
         completed: data.completed
       });
     });
@@ -228,7 +228,7 @@ class Todo extends Component {
         <div className="row" ref={node => (this.node = node)}>
           {/* Uncompleted tasks  */}
           <Uncompleted
-            todos={this.state.data}
+            todos={this.state.uncompleted}
             ItemDragging={this.state.draggingA}
             idEdited={this.state.idEdited}
             onDelete={this.onDelete}

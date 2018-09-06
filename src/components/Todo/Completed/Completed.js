@@ -1,24 +1,26 @@
 import React from "react";
 import BrowserDetection from "react-browser-detection";
-import { removeSVG, completeSVG,closeSVG } from "../../../utils/icons";
+import { removeSVG, completeSVG, closeSVG } from "../../../utils/icons";
 
 const browserHandler = {
   chrome: () => <div className="cover-bar" />,
   firefox: () => <div className="cover-bar width-15" />
 };
-const Completed = ({ todos,idEdited,
-      ItemDragging,
-      onClose,
-      onSave,
-      onDelete,
-      onComplete,
-      onDragStart,
-      onDragEnd,
-      onDragOver,
-      onDrop,
-      onDragLeave,
-      onDragEnter
-  }) => {
+const Completed = ({
+  todos,
+  idEdited,
+  ItemDragging,
+  onClose,
+  onSave,
+  onDelete,
+  onComplete,
+  onDragStart,
+  onDragEnd,
+  onDragOver,
+  onDrop,
+  onDragLeave,
+  onDragEnter
+}) => {
   var list = todos;
   if (list != null) {
     list = list.map(function(data, index) {
@@ -46,10 +48,10 @@ const Completed = ({ todos,idEdited,
             </div>
           </li>
         );
-      }else {
+      } else {
         return (
           <li
-          className={classes}
+            className={classes}
             key={index}
             draggable="true"
             data-value={data.item}
@@ -57,11 +59,11 @@ const Completed = ({ todos,idEdited,
             data-index={index}
             tabIndex={data.sort}
             title="Click to edit or drag to change position"
-            onDrop={e => onDrop(e,2)}
-            onDragOver={e => onDragOver(e,2)}
+            onDrop={e => onDrop(e, 2)}
+            onDragOver={e => onDragOver(e, 2)}
             onDragEnd={() => onDragEnd(2)}
             onDragLeave={() => onDragLeave()}
-            onDragEnter={e => onDragEnter(e,2)}
+            onDragEnter={e => onDragEnter(e, 2)}
             onDragStart={e => onDragStart(e)}
           >
             {data.item}
@@ -82,7 +84,6 @@ const Completed = ({ todos,idEdited,
           </li>
         );
       }
-
     });
   }
   return (
