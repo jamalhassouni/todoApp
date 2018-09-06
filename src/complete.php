@@ -10,13 +10,14 @@ $request = json_decode($request_body);
 if (isset($request->id)) {
     $id = filter_var($request->id, FILTER_VALIDATE_INT);
     $Type = filter_var($request->type, FILTER_VALIDATE_INT);
+    $sort = filter_var($request->sort, FILTER_VALIDATE_INT);
     if (!empty($id)) {
         // if type  == 2  change statu todo to completed
         if ($Type == 2) {
             $completDate = date("Y-m-d H:i:s");
             $updatedSort = mysqli_query($con, "UPDATE todo SET sort = sort +1 WHERE todoStatu=2");
             if (isset($updatedSort)) {
-                $updateUncompletedSort = mysqli_query($con, "UPDATE todo SET sort = sort - 1 WHERE id > $id and todoStatu = 1");
+                $updateUncompletedSort = mysqli_query($con, "UPDATE todo SET sort = sort - 1 WHERE sort > $sort and todoStatu = 1");
                 if (isset($updateUncompletedSort)) {
                     $updated = mysqli_query($con, "UPDATE  todo SET sort=1,todoStatu=2,completDate='$completDate' WHERE id=$id ");
                     if (isset($updated)) {
@@ -38,7 +39,7 @@ if (isset($request->id)) {
         } else { // if  type = 1  then change statu todo to uncompleted
             $updatedSort = mysqli_query($con, "UPDATE todo SET sort = sort +1 WHERE todoStatu=1");
             if (isset($updatedSort)) {
-                $updateUncompletedSort = mysqli_query($con, "UPDATE todo SET sort = sort - 1 WHERE id > $id and todoStatu = 2");
+                $updateUncompletedSort = mysqli_query($con, "UPDATE todo SET sort = sort - 1 WHERE sort > $sort and todoStatu = 2");
                 if (isset($updateUncompletedSort)) {
                     $updated = mysqli_query($con, "UPDATE  todo SET sort=1,todoStatu=1 WHERE id=$id ");
                     if (isset($updated)) {

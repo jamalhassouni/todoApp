@@ -122,9 +122,9 @@ class Todo extends Component {
     this.onSort(FromId, PosFrom, ToId, PosTo);
   };
 
-  onDelete = id => {
+  onDelete = (id, type, sort) => {
     let url = `http://localhost/ReactTodolist/todo-app/src/server.php`;
-    TodosAPI.remove(url, { delete: id }).then(data => {
+    TodosAPI.remove(url, { delete: id, type: type, sort: sort }).then(data => {
       this.setState({
         data: data.todos,
         completed: data.completed
@@ -133,12 +133,11 @@ class Todo extends Component {
   };
   onAdd = e => {
     e.preventDefault();
-    let pos = Number(this.state.data.slice(-1)[0].sort) + 1;
     let item = e.target.addInput.value;
     if (item.trim()) {
       e.target.addInput.value = "";
       let url = `http://localhost/ReactTodolist/todo-app/src/server.php`;
-      TodosAPI.create(url, { todo: item, pos: pos }).then(data => {
+      TodosAPI.create(url, { todo: item }).then(data => {
         this.setState({
           data: data.todos,
           completed: data.completed
@@ -146,15 +145,14 @@ class Todo extends Component {
       });
     }
   };
-  onComplete = (id, type) => {
+  onComplete = (id, type, sort) => {
     let url = `http://localhost/ReactTodolist/todo-app/src/complete.php`;
-    TodosAPI.update(url, { id: id, type: type }).then(data => {
+    TodosAPI.update(url, { id: id, type: type, sort: sort }).then(data => {
       this.setState({
         data: data.todos,
         completed: data.completed
       });
     });
-
   };
 
   onEdit = (id, item) => {

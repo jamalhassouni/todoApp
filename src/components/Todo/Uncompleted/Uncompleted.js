@@ -52,8 +52,8 @@ const Uncompleted = ({
       } else {
         return (
           <li
-          tabIndex={data.sort}
-          title="Click to edit or drag to change position"
+            tabIndex={data.sort}
+            title="Click to edit or drag to change position"
             className={classes}
             data-value={data.item}
             draggable="true"
@@ -72,13 +72,13 @@ const Uncompleted = ({
               <button
                 className="remove"
                 title="Delete"
-                onClick={() => onDelete(data.id)}
+                onClick={() => onDelete(data.id, 1, data.sort)}
                 dangerouslySetInnerHTML={{ __html: removeSVG }}
               />
               <button
                 className="complete"
                 title="Mark as Completed"
-                onClick={() => onComplete(data.id, 2)}
+                onClick={() => onComplete(data.id, 2, data.sort)}
                 dangerouslySetInnerHTML={{ __html: completeSVG }}
               />
             </div>
