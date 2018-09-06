@@ -11,7 +11,8 @@ class Todo extends Component {
     this.state = {
       data: [],
       completed: [],
-      dragging: undefined,
+      draggingA: undefined,
+      draggingB: undefined,
       idEdited: null
     };
   } //constructor
@@ -70,24 +71,41 @@ class Todo extends Component {
       this.handleClickOutside();
     }
   };
-  onDragOver = e => {
+  onDragOver = (e,type) => {
     e.preventDefault();
-    const items = this.state.data;
+    let items, dragging;
+    if(type === 1){
+      items = this.state.data;
+     dragging = this.state.draggingA;
+    }else if(type ===2){
+      items = this.state.completed;
+      dragging = this.state.draggingB;
+    }
     let key = e.currentTarget.dataset.index;
-    let dragging = this.state.dragging;
     let dragedFrom = isFinite(dragging) ? dragging : this.dragged;
     let dragedTo = Number(key);
     items.splice(dragedTo, 0, items.splice(dragedFrom, 1)[0]);
-    this.setState({
-      dragging: dragedTo
-    });
-    // this.sort(items, dragedTo);
+    if(type === 1){
+      this.setState({
+        draggingA: dragedTo
+      });
+     }else if(type ===2){
+      this.setState({
+        draggingB: dragedTo
+      });
+     }
   };
-  onDragEnd = () => {
+  onDragEnd = (type) => {
     // update state
-    this.setState({
-      dragging: undefined
-    });
+    if(type === 1){
+      this.setState({
+        draggingA: undefined
+      });
+     }else if(type ===2){
+      this.setState({
+        draggingB: undefined
+      });
+     }
   };
   onDragStart = e => {
     let key = e.currentTarget.dataset.index;
@@ -95,19 +113,31 @@ class Todo extends Component {
     e.dataTransfer.setData("text/plain", null);
     this.dragged = Number(key);
   };
-  onDragEnter = e => {
+  onDragEnter = (e,type)=> {
     let to = Number(e.currentTarget.dataset.index);
-    this.setState({
-      dragging: to
-    });
+    if(type === 1){
+      this.setState({
+        draggingA: to
+      });
+     }else if(type ===2){
+      this.setState({
+        draggingB: to
+      });
+     }
   };
 
   onDragLeave = () => {};
 
-  Drop = e => {
+  Drop = (e,type) => {
     e.preventDefault();
-    const items = this.state.data;
-    let dragging = this.state.dragging;
+    let items,dragging;
+    if(type === 1){
+      items = this.state.data;
+     dragging = this.state.draggingA;
+    }else if(type ===2){
+      items = this.state.completed;
+      dragging = this.state.draggingB;
+    }
     let key = e.currentTarget.dataset.index;
     let dragedFrom = isFinite(dragging) ? dragging : this.dragged;
     let dragedTo = Number(key);
@@ -116,9 +146,16 @@ class Todo extends Component {
       PosFrom = items[dragedFrom].sort,
       ToId = items[dragedFrom].id,
       PosTo = items[this.dragged].sort;
-    this.setState({
-      dragging: dragedTo
-    });
+     if(type === 1){
+      this.setState({
+        draggingA: dragedTo
+      });
+     }else if(type ===2){
+      this.setState({
+        draggingB: dragedTo
+      });
+     }
+
     this.onSort(FromId, PosFrom, ToId, PosTo);
   };
 
@@ -192,11 +229,10 @@ class Todo extends Component {
           {/* Uncompleted tasks  */}
           <Uncompleted
             todos={this.state.data}
-            ItemDragging={this.state.dragging}
+            ItemDragging={this.state.draggingA}
             idEdited={this.state.idEdited}
             onDelete={this.onDelete}
             onSave={this.onSave}
-            onSort={this.onSort}
             onClose={this.onClose}
             onComplete={this.onComplete}
             onDrop={this.Drop}
@@ -210,12 +246,18 @@ class Todo extends Component {
           {/* Completed tasks */}
           <Completed
             todos={this.state.completed}
-            ItemDragging={this.state.dragging}
+            ItemDragging={this.state.draggingB}
             onDelete={this.onDelete}
             idEdited={this.state.idEdited}
             onSave={this.onSave}
             onClose={this.onClose}
             onComplete={this.onComplete}
+            onDrop={this.Drop}
+            onDragLeave={this.onDragLeave}
+            onDragEnter={this.onDragEnter}
+            onDragOver={this.onDragOver}
+            onDragEnd={this.onDragEnd}
+            onDragStart={this.onDragStart}
           />
         </div>
       </div>

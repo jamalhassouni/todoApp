@@ -6,7 +6,19 @@ const browserHandler = {
   chrome: () => <div className="cover-bar" />,
   firefox: () => <div className="cover-bar width-15" />
 };
-const Completed = ({ todos,idEdited,ItemDragging,onClose,onSave, onDelete, onComplete }) => {
+const Completed = ({ todos,idEdited,
+      ItemDragging,
+      onClose,
+      onSave,
+      onDelete,
+      onComplete,
+      onDragStart,
+      onDragEnd,
+      onDragOver,
+      onDrop,
+      onDragLeave,
+      onDragEnter
+  }) => {
   var list = todos;
   if (list != null) {
     list = list.map(function(data, index) {
@@ -39,10 +51,18 @@ const Completed = ({ todos,idEdited,ItemDragging,onClose,onSave, onDelete, onCom
           <li
           className={classes}
             key={index}
+            draggable="true"
+            data-value={data.item}
             data-id={data.id}
             data-index={index}
             tabIndex={data.sort}
             title="Click to edit or drag to change position"
+            onDrop={e => onDrop(e,2)}
+            onDragOver={e => onDragOver(e,2)}
+            onDragEnd={() => onDragEnd(2)}
+            onDragLeave={() => onDragLeave()}
+            onDragEnter={e => onDragEnter(e,2)}
+            onDragStart={e => onDragStart(e)}
           >
             {data.item}
             <div className="buttons">
