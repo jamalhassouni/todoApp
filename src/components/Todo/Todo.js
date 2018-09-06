@@ -195,7 +195,6 @@ class Todo extends Component {
             ItemDragging={this.state.dragging}
             idEdited={this.state.idEdited}
             onDelete={this.onDelete}
-            onEdit={this.onEdit}
             onSave={this.onSave}
             onSort={this.onSort}
             onClose={this.onClose}
@@ -211,7 +210,11 @@ class Todo extends Component {
           {/* Completed tasks */}
           <Completed
             todos={this.state.completed}
+            ItemDragging={this.state.dragging}
             onDelete={this.onDelete}
+            idEdited={this.state.idEdited}
+            onSave={this.onSave}
+            onClose={this.onClose}
             onComplete={this.onComplete}
           />
         </div>
