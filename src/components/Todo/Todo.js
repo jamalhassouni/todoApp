@@ -154,6 +154,7 @@ class Todo extends Component {
         completed: data.completed
       });
     });
+
   };
 
   onEdit = (id, item) => {

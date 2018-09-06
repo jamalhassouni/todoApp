@@ -14,31 +14,45 @@ if (isset($request->id)) {
         // if type  == 2  change statu todo to completed
         if ($Type == 2) {
             $completDate = date("Y-m-d H:i:s");
-            $updated = mysqli_query($con, "UPDATE  todo SET todoStatu=2,completDate='$completDate' WHERE id=$id ");
-            if (isset($updated)) {
-                $query = mysqli_query($con, "SELECT * from todo WHERE todoStatu=1 ORDER BY sort ASC");
-                while ($data = mysqli_fetch_object($query)) {
-                    $output["todos"][] = $data;
+            $updatedSort = mysqli_query($con, "UPDATE todo SET sort = sort +1 WHERE todoStatu=2");
+            if (isset($updatedSort)) {
+                $updateUncompletedSort = mysqli_query($con, "UPDATE todo SET sort = sort - 1 WHERE id > $id and todoStatu = 1");
+                if (isset($updateUncompletedSort)) {
+                    $updated = mysqli_query($con, "UPDATE  todo SET sort=1,todoStatu=2,completDate='$completDate' WHERE id=$id ");
+                    if (isset($updated)) {
+                        $query = mysqli_query($con, "SELECT * from todo WHERE todoStatu=1 ORDER BY sort ASC");
+                        while ($data = mysqli_fetch_object($query)) {
+                            $output["todos"][] = $data;
+                        }
+                        $query = mysqli_query($con, "SELECT * from todo WHERE todoStatu=2 ORDER BY sort ASC");
+                        while ($data = mysqli_fetch_object($query)) {
+                            $output["completed"][] = $data;
+                        }
+                    }
                 }
-                $query = mysqli_query($con, "SELECT * from todo WHERE todoStatu=2 ORDER BY sort ASC");
-                while ($data = mysqli_fetch_object($query)) {
-                    $output["completed"][] = $data;
-                }
+
             } else {
                 $output['msg'] = "error cannot execute query ";
 
             }
         } else { // if  type = 1  then change statu todo to uncompleted
-            $updated = mysqli_query($con, "UPDATE  todo SET todoStatu=1 WHERE id=$id ");
-            if (isset($updated)) {
-                $query = mysqli_query($con, "SELECT * from todo WHERE todoStatu=1 ORDER BY sort ASC");
-                while ($data = mysqli_fetch_object($query)) {
-                    $output["todos"][] = $data;
+            $updatedSort = mysqli_query($con, "UPDATE todo SET sort = sort +1 WHERE todoStatu=1");
+            if (isset($updatedSort)) {
+                $updateUncompletedSort = mysqli_query($con, "UPDATE todo SET sort = sort - 1 WHERE id > $id and todoStatu = 2");
+                if (isset($updateUncompletedSort)) {
+                    $updated = mysqli_query($con, "UPDATE  todo SET sort=1,todoStatu=1 WHERE id=$id ");
+                    if (isset($updated)) {
+                        $query = mysqli_query($con, "SELECT * from todo WHERE todoStatu=1 ORDER BY sort ASC");
+                        while ($data = mysqli_fetch_object($query)) {
+                            $output["todos"][] = $data;
+                        }
+                        $query = mysqli_query($con, "SELECT * from todo WHERE todoStatu=2 ORDER BY sort ASC");
+                        while ($data = mysqli_fetch_object($query)) {
+                            $output["completed"][] = $data;
+                        }
+                    }
                 }
-                $query = mysqli_query($con, "SELECT * from todo WHERE todoStatu=2 ORDER BY sort ASC");
-                while ($data = mysqli_fetch_object($query)) {
-                    $output["completed"][] = $data;
-                }
+
             } else {
                 $output['msg'] = "error cannot execute query ";
 

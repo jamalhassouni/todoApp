@@ -32,6 +32,7 @@ const Uncompleted = ({
         return (
           <li key={index} className="editable">
             <input
+              tabIndex={data.sort}
               className="inputedit"
               type="text"
               onKeyPress={e => onSave(e)}
@@ -51,7 +52,7 @@ const Uncompleted = ({
       } else {
         return (
           <li
-          tabIndex={index}
+          tabIndex={data.sort}
           title="Click to edit or drag to change position"
             className={classes}
             data-value={data.item}
