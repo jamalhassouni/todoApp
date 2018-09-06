@@ -13,11 +13,11 @@ const Completed = ({todos,onDelete,onComplete}) => {
     list = list.map(
       function(data, index) {
         return (
-       <li key={index} >
+       <li key={index} tabIndex={index}  title="Click to edit or drag to change position" >
           {data.item}
         <div className="buttons">
-       <button className="remove" onClick={() => onDelete(data.id)} dangerouslySetInnerHTML={{ __html: removeSVG }}/>
-       <button className="complete" onClick={()=> onComplete(data.id,1)} dangerouslySetInnerHTML={{ __html: completeSVG }}/>
+       <button className="remove" title="Delete" onClick={() => onDelete(data.id)} dangerouslySetInnerHTML={{ __html: removeSVG }}/>
+       <button className="complete" title="Mark as Uncompleted" onClick={()=> onComplete(data.id,1)} dangerouslySetInnerHTML={{ __html: completeSVG }}/>
       </div>
        </li>
         );

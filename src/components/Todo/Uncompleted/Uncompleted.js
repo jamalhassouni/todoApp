@@ -41,6 +41,7 @@ const Uncompleted = ({
             <div className="buttons">
               <button
                 className="close"
+                title="Cancel"
                 onClick={() => onClose()}
                 dangerouslySetInnerHTML={{ __html: closeSVG }}
               />
@@ -50,6 +51,8 @@ const Uncompleted = ({
       } else {
         return (
           <li
+          tabIndex={index}
+          title="Click to edit or drag to change position"
             className={classes}
             data-value={data.item}
             draggable="true"
@@ -67,11 +70,13 @@ const Uncompleted = ({
             <div className="buttons">
               <button
                 className="remove"
+                title="Delete"
                 onClick={() => onDelete(data.id)}
                 dangerouslySetInnerHTML={{ __html: removeSVG }}
               />
               <button
                 className="complete"
+                title="Mark as Completed"
                 onClick={() => onComplete(data.id, 2)}
                 dangerouslySetInnerHTML={{ __html: completeSVG }}
               />
