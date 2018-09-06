@@ -3,7 +3,6 @@
   "version": "1.0",
   "private": true,
   "dependencies": {
-    "jquery": "^3.3.1",
     "react": "^16.4.2",
     "react-browser-detection": "^1.2.0",
     "react-dom": "^16.4.2",
