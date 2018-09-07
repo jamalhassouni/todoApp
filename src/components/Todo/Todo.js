@@ -194,16 +194,17 @@ class Todo extends Component {
   };
 
   onSort = (From, PosFrom, To, PosTo) => {
-    TodosAPI.Sort({
+    TodosAPI.update({
       from: From,
       posFrom: PosFrom,
       to: To,
       posTo: PosTo
     }).then(data => {
-      this.setState({
-        uncompleted: data.todos,
-        completed: data.completed
-      });
+      if (data.status === 200) {
+        this.getData();
+      } else {
+        console.log(data.message);
+      }
     });
   };
 
