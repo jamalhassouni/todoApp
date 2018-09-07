@@ -19,12 +19,7 @@ class Todo extends Component {
 
   componentDidMount() {
     document.addEventListener("click", this.handleEdit, false);
-    TodosAPI.fetchAll().then(data => {
-      this.setState({
-        uncompleted: data.todos,
-        completed: data.completed
-      });
-    });
+    this.getData();
   }
   componentWillUnmount() {
     document.removeEventListener("click", this.handleEdit, false);
@@ -160,12 +155,10 @@ class Todo extends Component {
   };
 
   onDelete = (id, type, sort) => {
-    let url = `http://localhost/ReactTodolist/todo-app/src/server.php`;
-    TodosAPI.remove(url, { delete: id, type: type, sort: sort }).then(data => {
-      this.setState({
-        uncompleted: data.todos,
-        completed: data.completed
-      });
+    TodosAPI.remove({ id: id, type: type, sort: sort }).then(data => {
+      if (data.status === 200) {
+        this.getData();
+      }
     });
   };
   onAdd = e => {
@@ -173,38 +166,35 @@ class Todo extends Component {
     let item = e.target.addInput.value;
     if (item.trim()) {
       e.target.addInput.value = "";
-      let url = `http://localhost/ReactTodolist/todo-app/src/server.php`;
-      TodosAPI.create(url, { todo: item }).then(data => {
-        this.setState({
-          uncompleted: data.todos,
-          completed: data.completed
-        });
+      TodosAPI.create({ item: item }).then(data => {
+        if (data.status === 200) {
+          this.getData();
+        }
       });
     }
   };
   onComplete = (id, type, sort) => {
-    let url = `http://localhost/ReactTodolist/todo-app/src/complete.php`;
-    TodosAPI.update(url, { id: id, type: type, sort: sort }).then(data => {
-      this.setState({
-        uncompleted: data.todos,
-        completed: data.completed
-      });
+    TodosAPI.update({ id: id, type: type, sort: sort }).then(data => {
+      if (data.status === 200) {
+        this.getData();
+      } else {
+        console.log(data.message);
+      }
     });
   };
 
   onEdit = (id, item) => {
-    let url = `http://localhost/ReactTodolist/todo-app/src/server.php`;
-    TodosAPI.update(url, { edit: id, item: item }).then(data => {
-      this.setState({
-        uncompleted: data.todos,
-        completed: data.completed
-      });
+    TodosAPI.update({ id: id, item: item }).then(data => {
+      if (data.status === 200) {
+        this.getData();
+      } else {
+        console.log(data.message);
+      }
     });
   };
 
   onSort = (From, PosFrom, To, PosTo) => {
-    let url = `http://localhost/ReactTodolist/todo-app/src/sort.php`;
-    TodosAPI.Sort(url, {
+    TodosAPI.Sort({
       from: From,
       posFrom: PosFrom,
       to: To,
@@ -217,6 +207,14 @@ class Todo extends Component {
     });
   };
 
+  getData = () => {
+    TodosAPI.fetchAll().then(data => {
+      this.setState({
+        uncompleted: data.uncompleted,
+        completed: data.completed
+      });
+    });
+  };
   render() {
     return (
       <div id="todo-list" className="container">

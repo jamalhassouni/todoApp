@@ -1,64 +1,64 @@
 export const fetchAll = () =>
-  fetch(`http://localhost/ReactTodolist/todo-app/src/server.php`)
+  fetch(`http://api.todo.com/`)
     // We get the API response and receive data in JSON format...
     .then(response => response.json());
 
-  export const create = (url = ``, data = {}) =>
-  fetch(url, {
-    method: "POST", // *GET, POST, PUT, DELETE, etc.
-    mode: "cors", // no-cors, cors, *same-origin
-    cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-    credentials: "same-origin", // include, same-origin, *omit
+export const create = (data = {}) =>
+  fetch(`http://api.todo.com/create/task/`, {
+    method: "POST",
+    mode: "cors",
+    cache: "no-cache",
+    credentials: "same-origin",
     headers: {
       "Content-Type": "application/json; charset=utf-8"
       // "Content-Type": "application/x-www-form-urlencoded",
     },
-    redirect: "follow", // manual, *follow, error
-    referrer: "no-referrer", // no-referrer, *client
-    body: JSON.stringify(data) // body data type must match "Content-Type" header
-  }).then(response => response.json()); // parses response to JSON
+    redirect: "follow",
+    referrer: "no-referrer",
+    body: JSON.stringify(data)
+  }).then(response => response.json());
 
-  export const update = (url = ``, data = {}) =>
-  fetch(url, {
-    method: "POST", // *GET, POST, PUT, DELETE, etc.
-    mode: "cors", // no-cors, cors, *same-origin
-    cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-    credentials: "same-origin", // include, same-origin, *omit
+export const update = (data = {}) =>
+  fetch(`http://api.todo.com/update.php`, {
+    method: "PUT",
+    mode: "cors",
+    cache: "no-cache",
+    credentials: "same-origin",
     headers: {
       "Content-Type": "application/json; charset=utf-8"
       // "Content-Type": "application/x-www-form-urlencoded",
     },
-    redirect: "follow", // manual, *follow, error
-    referrer: "no-referrer", // no-referrer, *client
-    body: JSON.stringify(data) // body data type must match "Content-Type" header
-  }).then(response => response.json()); // parses response to JSON
+    redirect: "follow",
+    referrer: "no-referrer",
+    body: JSON.stringify(data)
+  }).then(response => response.json());
 
-  export const Sort = (url = ``, data = {}) =>
-  fetch(url, {
-    method: "POST", // *GET, POST, PUT, DELETE, etc.
-    mode: "cors", // no-cors, cors, *same-origin
-    cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-    credentials: "same-origin", // include, same-origin, *omit
+export const Sort = (data = {}) =>
+  fetch(`http://localhost/ReactTodolist/todo-app/src/Api/sort.php`, {
+    method: "POST",
+    mode: "cors",
+    cache: "no-cache",
+    credentials: "same-origin",
     headers: {
       "Content-Type": "application/json; charset=utf-8"
       // "Content-Type": "application/x-www-form-urlencoded",
     },
-    redirect: "follow", // manual, *follow, error
-    referrer: "no-referrer", // no-referrer, *client
-    body: JSON.stringify(data) // body data type must match "Content-Type" header
-  }).then(response => response.json()); // parses response to JSON
+    redirect: "follow",
+    referrer: "no-referrer",
+    body: JSON.stringify(data)
+  }).then(response => response.json());
 
-  export const remove = (url = ``, data = {}) =>
-  fetch(url, {
-    method: "DELETE", // *GET, POST, PUT, DELETE, etc.
-    mode: "cors", // no-cors, cors, *same-origin
-    cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-    credentials: "same-origin", // include, same-origin, *omit
+export const remove = (data = {}) =>
+  fetch(`http://api.todo.com/delete.php`, {
+    method: "DELETE",
+    mode: "cors",
+    cache: "no-cache",
+    credentials: "same-origin",
     headers: {
       "Content-Type": "application/json; charset=utf-8"
       // "Content-Type": "application/x-www-form-urlencoded",
     },
-    redirect: "follow", // manual, *follow, error
-    referrer: "no-referrer", // no-referrer, *client
-    body: JSON.stringify(data) // body data type must match "Content-Type" header
-  }).then(response => response.json()); // parses response to JSON
+    redirect: "follow",
+    referrer: "no-referrer",
+    body: JSON.stringify(data)
+  }).then(response => response.json());
