@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import AddItem from "./Add/addItem";
 import Uncompleted from "./Uncompleted/Uncompleted";
 import Completed from "./Completed/Completed";
@@ -219,11 +218,7 @@ class Todo extends Component {
   render() {
     return (
       <div id="todo-list" className="container">
-        <AddItem onAdd={this.onAdd} />
-        <nav className="cl-effect">
-          <Link to={"/about"}>About</Link>
-        </nav>
-        <p>The busiest people have the most leisure...</p>
+      <AddItem onAdd={this.onAdd} />
         <div className="row" ref={node => (this.node = node)}>
           {/* Uncompleted tasks  */}
           <Uncompleted

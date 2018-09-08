@@ -90,6 +90,9 @@ const Uncompleted = ({
 
   return (
     <div className="col-md-6">
+  <div className="plate">
+  <p className="script"><span>Uncompleted tasks</span></p>
+</div>
       <ul className="todo scroll-bar-wrap" id="todo">
         <div className="scroll-box">{list}</div>
         <BrowserDetection>{browserHandler}</BrowserDetection>

@@ -88,6 +88,9 @@ const Completed = ({
   }
   return (
     <div className="col-md-6">
+    <div className="plate">
+  <p className="script"><span>Completed tasks</span></p>
+</div>
       <ul className="todo scroll-bar-wrap" id="completed">
         <div className="scroll-box">{list}</div>
         <BrowserDetection>{browserHandler}</BrowserDetection>
