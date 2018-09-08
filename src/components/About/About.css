@@ -1,0 +1,535 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  display: block;
+  background: #edf0f1;
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+  color: #616161;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -webkit-text-stroke: 1px transparent;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+.section {
+  position: relative;
+  padding-top: 15px;
+  padding-bottom: 30px;
+}
+.section .section-title {
+  margin-bottom: 18px;
+}
+.section .section-title .title-icon {
+  margin-right: 20px;
+  color: #06a763;
+}
+.section .section-title img {
+  width: 66px;
+  padding: 10px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  margin: -2px 12px 12px 12px;
+}
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  backface-visibility: hidden;
+}
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1000px;
+  }
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span {
+  font-family: "Raleway", sans-serif;
+}
+h4 {
+  font-size: 2.18rem;
+  line-height: 110%;
+  margin: 1.14rem 0 0.912rem 0;
+}
+p,
+a,
+li,
+label,
+input,
+blockquote,
+cite,
+div {
+  font-family: "Muli", sans-serif;
+}
+p {
+  color: #757575;
+}
+a {
+  color: #1976d2;
+}
+a:hover {
+  color: #2988e6;
+  text-decoration: none;
+}
+a:focus {
+  color: #12579b;
+  text-decoration: none;
+}
+h1 {
+  font-weight: 700;
+}
+h2,
+h3,
+h4 {
+  font-weight: 600;
+}
+h5,
+h6 {
+  font-weight: 500;
+}
+p,
+a,
+li {
+  font-weight: 400;
+}
+h6 {
+  font-size: 1.4em;
+}
+.is-hidden {
+  visibility: hidden;
+}
+
+.social {
+  z-index: 0 !important;
+}
+.black {
+  background-color: black !important;
+}
+.hide-overflow {
+  overflow: hidden !important;
+}
+.toast {
+  background-color: #1976d2;
+}
+.card {
+  position: relative;
+  background-color: #fff;
+  transition: box-shadow 0.25s;
+  -webkit-transition: box-shadow 0.25s;
+  border-radius: 0 !important;
+  margin: 8px 0;
+}
+.card .card-content {
+  padding: 40px;
+  border-radius: 0 0 2px 2px;
+}
+.card .card-content p {
+  margin: 0;
+  color: inherit;
+  text-align: center;
+}
+@media screen and (max-width: 767px) {
+  .btn-holder {
+    top: 102px;
+    right: 0;
+  }
+  .btn-holder .btn-large {
+    width: 36.5px;
+    height: 36.5px;
+  }
+  .btn-holder .btn-large i {
+    line-height: 1 !important;
+    font-size: 26px !important;
+  }
+  .middle {
+    top: 250px !important;
+    right: 50px !important;
+  }
+}
+#home .header-background {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 370px;
+  background: url(../../utils/img/background.jpeg) no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+}
+#v-card-holder {
+  overflow: visible;
+  width: 100%;
+  height: auto;
+  margin-top: -194px;
+  visibility: visible;
+    -webkit-transform: translateY(0) scale(1);
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    -webkit-transition: -webkit-transform 1.4s cubic-bezier(0.6, 0.2, 0.1, 1) 0s, opacity 1.4s cubic-bezier(0.6, 0.2, 0.1, 1) 0s;
+    transition: transform 1.4s cubic-bezier(0.6, 0.2, 0.1, 1) 0s, opacity 1.4s cubic-bezier(0.6, 0.2, 0.1, 1) 0s;
+}
+#v-card-holder #v-card {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  -webkit-transition: height 1s, color 1s, margin 1s;
+  transition: height 1s, color 1s, margin 1s;
+  z-index: 1;
+  background: #5D4037;
+  margin: -33px 3px 0 0;
+}
+#v-card-holder #v-card .info-headings {
+  max-width: 514px;
+}
+#v-card-holder #v-card .info-headings h4 {
+  display: block;
+  width: 100%;
+  font-weight: 900;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.29);
+}
+#v-card-holder #v-card .info-headings h6 {
+  display: block;
+  width: 100%;
+  font-weight: 300;
+  margin-top: -10px;
+  margin-bottom: 30px;
+  font-size: 1.2em;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.29);
+}
+#v-card-holder #v-card .infos {
+  max-width: 515px;
+  margin-top: 99px;
+}
+
+#v-card-holder #v-card .infos .profile-list .title {
+  display: block;
+  float: left;
+  color: #fff;
+  line-height: 26px;
+}
+#v-card-holder #v-card .infos .profile-list .title i {
+  font-size: 23px;
+}
+#v-card-holder #v-card .infos .profile-list .title .fa {
+  padding-left: 2px;
+}
+#v-card-holder #v-card .infos .profile-list .content {
+  display: block;
+  margin-left: 30px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #fff;
+}
+#v-card-holder #v-card .links {
+  max-width: 500px;
+  margin-left: -12px;
+  margin-top: 12px;
+  height: 100%;
+}
+#v-card-holder #v-card .links .social {
+  margin-left: 12px;
+  margin-bottom: 4px;
+  text-align: center;
+}
+#v-card-holder #v-card .links .social i {
+  font-size: 15px;
+  vertical-align: middle;
+  padding-bottom: 15px;
+}
+#v-card-holder #v-card .links .social .icon svg{
+   width: 15px;
+   vertical-align: middle;
+}
+#v-card-holder #v-card .links .social .icon svg .noFill{
+    fill:#fff;
+ }
+@media screen and (max-width: 400px) {
+  #v-card-holder #v-card .links .social {
+    margin: 4px;
+  }
+}
+@media screen and (max-width: 295px) {
+  #v-card-holder #v-card .links .social {
+    margin: 1px;
+  }
+}
+@media screen and (max-width: 990px) {
+  #v-card-holder #v-card .infos {
+    max-width: 278px;
+  }
+  #v-card-holder #v-card .links {
+    max-width: 325px;
+  }
+  #v-card-holder #v-card .info-headings {
+    max-width: 270px;
+  }
+}
+#v-card-holder #v-card #profile {
+  position: absolute;
+  right: 0;
+  z-index: 1;
+}
+#v-card-holder #v-card #profile img {
+  width: 400px;
+  height: auto;
+}
+#v-card-holder #v-card #profile .slant {
+  top: 0;
+  z-index: 1;
+  position: absolute;
+  border-style: solid;
+  border-width: 400px 0 0 100px;
+  border-color: rgba(223, 50, 50, 0) transparent transparent #5D4037;
+}
+#v-card-holder #v-card #profile .add-btn {
+  position: absolute;
+  background-color: #1976d2;
+  top: 20%;
+  right: 86%;
+  overflow: hidden;
+}
+#v-card-holder #v-card #profile .add-btn i {
+  font-size: 35px;
+  color: #fff;
+}
+@media screen and (max-width: 767px) {
+  #v-card-holder #v-card {
+    position: relative;
+    width: 100%;
+    overflow: visible;
+    z-index: 1;
+    top: 34px;
+  }
+  #v-card-holder #v-card #profile {
+    position: absolute;
+    bottom: 85%;
+    left: 0;
+    width: 150px;
+    height: auto;
+    margin-right: auto;
+    margin-left: auto;
+    z-index: 1;
+    background-color: transparent;
+  }
+  #v-card-holder #v-card #profile img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16),
+      0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  }
+  #v-card-holder #v-card #profile .slant {
+    display: none;
+    opacity: 0;
+    overflow: hidden;
+  }
+  #v-card-holder #v-card #profile .add-btn {
+    display: none;
+  }
+  #v-card-holder #v-card .social {
+    top: 0;
+    margin-left: 5px;
+    margin-bottom: 4px;
+  }
+
+  #v-card-holder #v-card .infos {
+    display: table;
+    margin: 0 auto;
+    max-width: 100%;
+    padding: 0;
+  }
+  #v-card-holder #v-card .links {
+    display: table;
+    max-width: 100%;
+    padding: 0;
+    margin: 0 auto 9px;
+  }
+  #v-card-holder #v-card .links #first_one {
+    margin-left: 0;
+  }
+  #v-card-holder #v-card .info-headings {
+    max-width: 100%;
+    text-align: center;
+    margin-top: 38px;
+  }
+  #v-card-holder #v-card .info-headings h6 {
+    margin-bottom: 20px;
+  }
+  #v-card-holder #v-card .card-content {
+    padding: 10px;
+  }
+}
+#about{transition:all 1s;}
+#about .about-btn{height:auto;margin-right:auto;margin-left:auto;animation-delay:1s;text-align:center;}
+#about .about-btn .btn{margin:7px 7px;background:#5D4037;color:#fff;width:180px;border-radius:2px;}
+#about .about-btn .btn:hover{background:#616161;}
+.btn-floating {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    width: 37px;
+    height: 37px;
+    padding: 0;
+    border-radius: 50%;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.btn,
+.btn-flat,
+.btn-large {
+    border: none;
+    border-radius: 2px;
+    display: inline-block;
+    height: 36px;
+    line-height: 36px;
+    outline: 0;
+    padding: 0 2rem;
+    text-transform: uppercase;
+    vertical-align: middle
+}
+
+.btn-floating.disabled,
+.btn-floating:disabled,
+.btn-large.disabled,
+.btn-large:disabled,
+.btn.disabled,
+.btn:disabled,
+.disabled.btn-large {
+    background-color: #DFDFDF!important;
+    box-shadow: none;
+    color: #9F9F9F!important;
+    cursor: default
+}
+
+.btn-floating.disabled *,
+.btn-floating:disabled *,
+.btn-large.disabled *,
+.btn-large:disabled *,
+.btn.disabled *,
+.btn:disabled *,
+.disabled.btn-large * {
+    pointer-events: none
+}
+
+.btn-floating.disabled:hover,
+.btn-floating:disabled:hover,
+.btn-large.disabled:hover,
+.btn-large:disabled:hover,
+.btn.disabled:hover,
+.btn:disabled:hover,
+.disabled.btn-large:hover {
+    background-color: #DFDFDF;
+    color: #9F9F9F
+}
+
+.btn i,
+.btn-flat i,
+.btn-floating i,
+.btn-large i {
+    font-size: 1.3rem;
+    line-height: inherit
+}
+
+.btn-floating i,
+.btn-large i {
+    font-size: 1.6rem
+}
+
+.btn-floating,
+.btn-floating i {
+    color: #fff;
+    line-height: 37px;
+    display: inline-block
+}
+
+.btn,
+.btn-large {
+    text-decoration: none;
+    color: #fff;
+    background-color: #26a69a;
+    letter-spacing: .5px;
+    transition: .2s ease-out;
+    cursor: pointer
+}
+
+.btn-large:hover,
+.btn:hover {
+    background-color: #2bbbad
+}
+
+.btn-floating,
+.btn-floating:hover {
+    background-color: #26a69a
+}
+
+.btn-floating {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    width: 37px;
+    height: 37px;
+    padding: 0;
+    border-radius: 50%;
+    transition: .3s;
+    cursor: pointer
+}
+
+.btn-floating i {
+    width: inherit
+}
+
+.btn-floating:before {
+    border-radius: 0
+}
+
+.btn-floating.btn-large {
+    width: 55.5px;
+    height: 55.5px
+}
+
+.btn-floating.btn-large i {
+    line-height: 55.5px
+}
+
+button.btn-floating {
+    border: none
+}
+.indigo {
+    background-color: #3f51b5!important;
+}
+.blue {
+    background-color: #2196F3!important;
+}
+.blue.darken-3 {
+    background-color: #1565C0!important;
+}
+.ins{
+background-color:#D81B60 !important;
+}
+.card .card-action {
+    border-top: 1px solid rgba(160, 160, 160, .2);
+    padding: 20px;
+}
