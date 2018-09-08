@@ -3,6 +3,7 @@ import AddItem from "./Add/addItem";
 import Uncompleted from "./Uncompleted/Uncompleted";
 import Completed from "./Completed/Completed";
 import * as TodosAPI from "../../utils/TodosAPI";
+import "./Todo.css";
 
 class Todo extends Component {
   constructor(props) {
