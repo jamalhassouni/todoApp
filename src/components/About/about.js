@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import {Link } from 'react-router-dom';
 import Card from './Card';
 import HeaderComponent from './Header';
+import Contact from '../Contact/Contact';
 //import "../../utils/styles/materialize.css";
 import "./About.css";
 class About  extends Component{
@@ -28,7 +29,7 @@ class About  extends Component{
                     <div id="about-btn" className="card-action">
                         <div className="about-btn">
                             <Link to={'/'} className="btn waves-effect" >Home</Link>
-                            <Link to={'/contact'} className="btn waves-effect">Contact Me</Link>
+                            <a href='#contact' className="btn waves-effect">Contact Me</a>
                         </div>
                     </div>
                 </div>
@@ -36,6 +37,7 @@ class About  extends Component{
         </div>
     </div>
 </div>
+<Contact/>
         </div>
      );
 
