@@ -9,9 +9,7 @@ const AddItem = ({ onAdd }) => {
     <div id="navbar" className="text-center">
           <ul id="menu">
             <li><Link to={'/'}><span>Home</span></Link></li>
-            <li><a href="/"><span>Add</span></a></li>
             <li><Link to={'/about'}><span>About me</span></Link></li>
-            <li><a href="/"><span>Contact</span></a></li>
           </ul>
           </div>
 
