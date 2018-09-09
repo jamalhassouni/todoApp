@@ -20,7 +20,7 @@ body {
   padding-bottom: 30px;
 }
 .section .section-title {
-  margin-bottom: 18px;
+  margin-bottom: 35px;
 }
 .section .section-title .title-icon {
   margin-right: 20px;
@@ -30,7 +30,7 @@ body {
   width: 66px;
   padding: 10px;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-  margin: -2px 12px 12px 12px;
+  margin: -2px 12px -17px 12px;
 }
 .container {
   padding-right: 15px;
@@ -378,7 +378,7 @@ h6 {
     margin-bottom: 20px;
   }
   #v-card-holder #v-card .card-content {
-    padding: 10px;
+    padding: 35px;
   }
 }
 #about{transition:all 1s;}
