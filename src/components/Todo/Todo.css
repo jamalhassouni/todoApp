@@ -157,21 +157,25 @@
 }
 .add-from input {
   width: 100%;
-  height: 50px;
+  height: 50px !important;;
   float: left;
   color: #fff;
+  border-bottom:none !important;
   font-size: 15px;
   font-weight: 400;
   text-indent: 18px;
   padding: 0 60px 0 0;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 5px 25px 25px 5px;
-  border: 0px;
-  box-shadow: none;
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-radius: 5px 25px 25px 5px !important;
+  border: 0px !important;
+  box-shadow: none !important;
   outline: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+}
+.add-from input:focus{
+  border-bottom:none !important;
 }
 .add-from input::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.75);
@@ -436,6 +440,10 @@ ul.todo li.editable .inputedit {
   font-weight: 500;
   color: #444;
   padding: 14px 53px 14px 14px;
+  box-sizing:inherit !important;
+  margin:0;
+  border:none;
+
 }
 /*
 ul.todo li:last-of-type {
@@ -466,7 +474,7 @@ ul.todo li .buttons button {
   -moz-appearance: none;
 }
 
-ul.todo li:hover {
+ul.todo li:not(.editable):hover {
   cursor: pointer;
   background: #e1e1e1;
 }
