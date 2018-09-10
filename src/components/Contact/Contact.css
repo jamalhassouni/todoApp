@@ -67,6 +67,10 @@ textarea:valid ~ label{
     height: 300px;
   }
 }
+.leaflet-container {
+  height: 400px;
+  width: 100%;
+}
 #contact input:not([type]):focus:not([readonly]) + label,
 #contact input[type="text"]:focus:not([readonly]) + label,
 #contact input[type="password"]:focus:not([readonly]) + label,
