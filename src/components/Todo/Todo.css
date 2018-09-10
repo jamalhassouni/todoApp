@@ -105,10 +105,7 @@
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4) inset,
     0 0 20px -5px rgba(0, 0, 0, 0.4), 0 0 0px 3px #fff inset;
 }
-#menu li:hover {
-  width: 203px;
-  margin: 0 -5px;
-}
+
 #menu a:hover {
   color: #25b99a;
 }
@@ -525,10 +522,7 @@ ul.todo li:not(.editable):hover {
   #menu li {
     margin: 0 7px;
   }
-  #menu li:hover {
-    margin: 0 11px;
-    width: 140px;
-  }
+
 }
 
 @media (max-width: 768px) {
@@ -539,10 +533,7 @@ ul.todo li:not(.editable):hover {
     width: 137px;
     margin: 0 9px;
   }
-  #menu li:hover {
-    width: 149px;
-    margin: 0 4px;
-  }
+
 }
 
 @media (max-width: 320px) {
@@ -590,7 +581,6 @@ ul.todo li:not(.editable):hover {
   }
   #menu li,
   #menu li:hover {
-    width: 115px;
     margin: 8px;
   }
   #menu li a {
