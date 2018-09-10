@@ -5,7 +5,7 @@ import  { addSVG } from "../../../utils/icons";
 const AddItem = ({ onAdd }) => {
   return (
     <div className="app-top">
-    <a href="/" id="logo">Todo App</a>
+      <Link  to={'/'} id="logo">Todo App</Link>
     <div id="navbar" className="text-center">
           <ul id="menu">
             <li><Link to={'/'}><span>Home</span></Link></li>
