@@ -34,4 +34,5 @@ cd todoApp
 - HTML
 - CSS
 - PHP
+- MYSQL
 - leaflet API
