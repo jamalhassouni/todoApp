@@ -233,17 +233,7 @@ ul.todo#todo {
   /* padding: 60px 0 0 0;*/
 }
 
-ul.todo#completed:before,
-ul.todo#todo:before {
-  content: "";
-  width: 150px;
-  height: 1px;
-  background: #d8e5e0;
-  position: absolute;
-  top: 30px;
-  left: 50%;
-  margin: 0 0 0 -75px;
-}
+
 
 ul.todo#todo:empty:after {
   content: "You have nothing to-do!";
