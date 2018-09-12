@@ -86,6 +86,12 @@ const Completed = ({
         );
       }
     });
+  } else {
+    list = (
+      <div className="text-center">
+        <span>No Completed Tasks Found</span>
+      </div>
+    );
   }
   return (
     <div className="col-md-6">

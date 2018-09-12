@@ -87,6 +87,12 @@ const Uncompleted = ({
         );
       }
     });
+  } else {
+    list = (
+      <div className="text-center">
+        <span>No Tasks Found</span>
+      </div>
+    );
   }
 
   return (
