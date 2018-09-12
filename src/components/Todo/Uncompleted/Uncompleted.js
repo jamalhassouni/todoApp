@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import BrowserDetection from "react-browser-detection";
 import { removeSVG, completeSVG, closeSVG } from "../../../utils/icons";
 
@@ -90,9 +91,11 @@ const Uncompleted = ({
 
   return (
     <div className="col-md-6">
-  <div className="plate">
-  <p className="script"><span>Uncompleted tasks</span></p>
-</div>
+      <div className="plate">
+        <p className="script">
+          <span>Uncompleted tasks</span>
+        </p>
+      </div>
       <ul className="todo scroll-bar-wrap" id="todo">
         <div className="scroll-box">{list}</div>
         <BrowserDetection>{browserHandler}</BrowserDetection>
@@ -100,5 +103,19 @@ const Uncompleted = ({
     </div>
   );
 };
-
+Uncompleted.propTypes = {
+  todos: PropTypes.array,
+  idEdited: PropTypes.string,
+  ItemDragging: PropTypes.number,
+  onClose: PropTypes.func,
+  onSave: PropTypes.func,
+  onDelete: PropTypes.func,
+  onComplete: PropTypes.func,
+  onDragStart: PropTypes.func,
+  onDragEnd: PropTypes.func,
+  onDragOver: PropTypes.func,
+  onDrop: PropTypes.func,
+  onDragLeave: PropTypes.func,
+  onDragEnter: PropTypes.func
+};
 export default Uncompleted;

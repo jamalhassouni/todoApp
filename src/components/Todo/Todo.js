@@ -219,7 +219,7 @@ class Todo extends Component {
   render() {
     return (
       <div id="todo-list" className="container">
-      <AddItem onAdd={this.onAdd} />
+        <AddItem onAdd={this.onAdd} />
         <div className="row" ref={node => (this.node = node)}>
           {/* Uncompleted tasks  */}
           <Uncompleted

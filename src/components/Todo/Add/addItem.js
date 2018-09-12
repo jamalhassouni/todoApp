@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import {Link } from 'react-router-dom';
 import  { addSVG } from "../../../utils/icons";
 
@@ -31,5 +32,7 @@ const AddItem = ({ onAdd }) => {
 
   );
 };
-
+AddItem.propTypes = {
+  onAdd: PropTypes.func
+};
 export default AddItem;
