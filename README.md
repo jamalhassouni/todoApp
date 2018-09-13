@@ -1,10 +1,10 @@
 ## Todo List React js and PHP
 ## Details
-A single-page web application, built using the React framework And php
+A single-page web application, built using the React framework , php And Mysql 
 
 Create and edit a task You can also delete it and you can change its order within its existing list
 You can make them as completed or incomplete
-This application was developed based on React js and  PHP
+This application was developed based on React js and  PHP , Mysql
 
 Check the online demo [here](https://jamal-app.netlify.com/)
 
